@@ -4,29 +4,17 @@
         "enable": true,
         "threshold": 1,
         "singlelink": true,
-        "persist": {
-            "subs": "crawledsubs",
-            "proxies": "crawledproxies"
-        },
         "config": {
             "liveness": true,
-            "include": "香港|美国|日本|台湾|新加坡|韩国",
-            "exclude": "过期|重置|倍率|流量",
+            "include": "香港|美国|日本|台湾|新加坡",
+            "exclude": "过期|重置|倍率",
             "rename": "Ultimate_Node"
         },
         "pages": [
-            { "enable": true, "url": "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodev2ray.yaml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://yoyapai.com/mianfeijiedian/20260302-clashvpnmfjiedian-yoyapai.com.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/Eternity.yml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://raw.githubusercontent.com/lagzian/SS-Collector/main/mix_clash.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://cdn.jsdelivr.net/gh/vxiaov/free_proxies@main/clash/clash.provider.yaml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://raw.githubusercontent.com/Misaka-blog/chromego_merge/main/sub/merged_proxies_new.yaml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://raw.githubusercontent.com/MrMohebi/xray-proxy-grabber-telegram/master/collected-proxies/clash-meta/all.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://raw.githubusercontent.com/aiboboxx/clashfree/main/clash.yml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml", "push_to": ["ultimate-clash"] },
-            { "enable": true, "url": "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://tt.vg/freeclash", "push_to": ["ultimate-clash"] }
         ]
     },
@@ -35,7 +23,7 @@
             "emoji": true,
             "list": true,
             "targets": {
-                "clash": "Ultimate_Speed_V4_Fixed"
+                "clash": "Ultimate_Speed_Fixed"
             }
         }
     },
