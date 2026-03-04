@@ -1,0 +1,10 @@
+{
+  "crawl": {
+    "pages": [
+      {
+        "url": "https://raw.githubusercontent.com/..." ,
+        "enable": true
+      }
+    ]
+  }
+}
