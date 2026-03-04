@@ -89,7 +89,10 @@ def main():
 
     lines.append("proxy-groups:")
     lines.append("  - name: 🚀 雅典娜全节点")
-    lines.append("    type: select")
+    lines.append("    type: url-test")                     # 改为自动测速并选择最快节点
+    lines.append("    url: http://www.gstatic.com/generate_204") # 使用谷歌延迟测试接口
+    lines.append("    interval: 300")                      # 每 5 分钟 (300秒) 自动测速一次
+    lines.append("    tolerance: 50")                      # 容差 50ms (防止频繁切换节点)
     lines.append("    proxies:")
     
     if proxy_names:
