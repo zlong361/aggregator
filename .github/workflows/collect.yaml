@@ -32,8 +32,9 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Collect
-        # 核心逻辑：只管跑，不管有没有 Gist 密钥
-        run: python -u subscribe/collect.py --skip
+        # 【终极杀招】强制指定只加载配置文件，并使用 --skip 跳过所有内置爬虫
+        # 即使代码想爬，也会因为找不到指令而停止
+        run: python -u subscribe/collect.py --skip --source subscribe/config/config.default.json
 
       - name: Timestamp
         run: date
