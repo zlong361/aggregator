@@ -2,7 +2,6 @@
     "crawl": {
         "enable": false,
         "pages": [
-            { "enable": true, "url": "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodev2ray.yaml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/Eternity.yml", "push_to": ["ultimate-clash"] },
             { "enable": true, "url": "https://raw.githubusercontent.com/lagzian/SS-Collector/main/mix_clash.yaml", "push_to": ["ultimate-clash"] },
