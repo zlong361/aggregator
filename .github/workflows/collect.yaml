@@ -1,6 +1,6 @@
 name: Collect
 
-on:  # executed once a week on Sundays at 00:00
+on:
   schedule:
     - cron: "0 0 * * 1"
   workflow_dispatch:
@@ -10,16 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # time zone
   TZ: Asia/Shanghai
-  # github access token
-  GIST_PAT: ${{ secrets.GIST_PAT }}
-  # github username and gist id, separated by '/'
-  GIST_LINK: ${{ secrets.GIST_LINK }}
-  # the url to the list of airports that you maintain yourself
-  CUSTOMIZE_LINK: ${{ secrets.CUSTOMIZE_LINK }}
-  # include special protocols, such as vless hysteria2 and hysteria
-  ENABLE_SPECIAL_PROTOCOLS: ${{ vars.ENABLE_SPECIAL_PROTOCOLS }}
 
 jobs:
   process:
@@ -40,25 +31,8 @@ jobs:
       - name: Install
         run: pip3 install -r requirements.txt
 
-      - name: Check
-        run: |
-          if [ -z "$GIST_PAT" ]; then
-              echo "Error: environment 'GIST_PAT' cannot be empty"
-              exit 1
-          fi
-          if [ -z "$GIST_LINK" ]; then
-              echo "Error: environment 'GIST_LINK' cannot be empty"
-              exit 1
-          fi
-          LINK_PARTS=$(echo "$GIST_LINK" | awk -F'/' 'NF==2 && $1!="" && $2!=""')
-          if [ -z "$LINK_PARTS" ]; then
-              echo "Error: environment 'GIST_LINK' is not valid, should be 'username/gist_id' format"
-              exit 1
-          fi
-
       - name: Collect
-        # 【核心修改点】：这里我已经帮你删掉了 --all 和 --overwrite
-        # 现在它只会老老实实跑你那两个配置好的订阅链接
+        # 核心逻辑：只管跑，不管有没有 Gist 密钥
         run: python -u subscribe/collect.py --skip
 
       - name: Timestamp
