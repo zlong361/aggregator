@@ -1,36 +1,10 @@
 {
-    "domains": [],
     "crawl": {
         "enable": false,
-        "threshold": 0,
-        "singlelink": false,
-        "config": {
-            "liveness": false,
-            "include": "香港|美国|日本|台湾",
-            "exclude": "过期|重置",
-            "rename": "Ultimate_Node"
-        },
         "pages": [
-            { 
-                "enable": true, 
-                "url": "https://node.clashnode.cc/uploads/2026/03/3-20260304.yaml", 
-                "push_to": ["ultimate-clash"] 
-            },
-            { 
-                "enable": true, 
-                "url": "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml", 
-                "push_to": ["ultimate-clash"] 
-            }
+            { "enable": true, "url": "https://node.clashnode.cc/uploads/2026/03/3-20260304.yaml", "push_to": ["ultimate-clash"] },
+            { "enable": true, "url": "https://bestsub.bestrui.ggff.net/share/bestsub/cdcefaa4-1f0d-462e-ba76-627b344989f2/all.yaml", "push_to": ["ultimate-clash"] }
         ]
-    },
-    "groups": {
-        "ultimate-clash": {
-            "emoji": true,
-            "list": true,
-            "targets": {
-                "clash": "Ultimate_Speed_Fixed"
-            }
-        }
     },
     "storage": {
         "engine": "github",
