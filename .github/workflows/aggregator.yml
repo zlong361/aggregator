@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -28,18 +28,24 @@ jobs:
 
       - name: Download Clash Core
         run: |
-          wget https://github.com/Dreamacro/clash/releases/latest/download/clash-linux-amd64.gz
-          gunzip clash-linux-amd64.gz
-          chmod +x clash-linux-amd64
-          mv clash-linux-amd64 clash
+          CLASH_URL=$(curl -s https://api.github.com/repos/Dreamacro/clash/releases/latest \
+            | grep browser_download_url \
+            | grep linux-amd64 \
+            | head -n 1 \
+            | cut -d '"' -f 4)
 
-      - name: Run Aggregator Speed Core
+          wget -O clash.gz "$CLASH_URL"
+          gunzip clash.gz
+          chmod +x clash
+
+      - name: Run Aggregator Script
         run: python main.py
 
       - name: Commit Result
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
+
           git add clash.yaml
 
           git diff --quiet || git commit -m "auto update"
