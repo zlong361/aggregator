@@ -66,6 +66,3 @@ jobs:
 
       - name: Collect
         run: python -u subscribe/collect.py --skip
-
-      - name: Timestamp
-        run: date
