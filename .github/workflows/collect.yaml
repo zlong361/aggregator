@@ -11,14 +11,12 @@ concurrency:
 
 env:
   TZ: Asia/Shanghai
-  # 【降维打击】强制覆盖脚本内部逻辑，彻底关闭爬虫
-  CRAWL_ENABLE: "false"
-  CRAWL_WANT_VLESS: "false"
-  CRAWL_WANT_HYSTERIA2: "false"
 
 jobs:
   process:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,15 +27,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-          architecture: "x64"
-          cache: "pip"
-
-      - name: Install
-        run: pip3 install -r requirements.txt
 
       - name: Collect
-        # 使用最原始的指令，配合 env 里的禁用逻辑
-        run: python -u subscribe/collect.py --skip
+        run: python -u subscribe/collect.py
 
-      - name: Timestamp
-        run: date
+      # 【新增：核心同步逻辑】把生成的 clash.yaml 强行推送到 output 分支
+      - name: Deploy to Output Branch
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git checkout --orphan output-temp
+          git add clash.yaml
+          git commit -m "雅典娜 AX6600 订阅更新: $(date)"
+          git push origin output-temp:output --force
