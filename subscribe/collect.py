@@ -1,57 +1,64 @@
 # -*- coding: utf-8 -*-
-import os, json, urllib.request, re, base64
+import os, json, urllib.request, yaml, base64
 
 def main():
-    print(f"🚀 雅典娜 AX6600 最后的终极大杀器：正在剔除无效干扰项...")
+    print(f"🚀 雅典娜 AX6600 终极提速：专业级节点过滤引擎启动...")
     config_path = os.path.join(os.path.dirname(__file__), 'config/config.default.json')
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
     
     urls = [page['url'] for page in config.get('crawl', {}).get('pages', []) if page.get('enable')]
-    nodes, node_names = [], []
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+    all_proxies = []
+    headers = {'User-Agent': 'Clash-Verge/1.3.8'} # 伪装成 Clash 客户端抓取
 
     for url in urls:
         try:
+            print(f"📥 正在解析: {url}")
             req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=30) as res:
-                raw_data = res.read()
-                try: content = raw_data.decode('utf-8')
-                except: content = raw_data.decode('latin-1')
+                data = res.read().decode('utf-8', errors='ignore')
+                
+                # 尝试解析 YAML
+                try:
+                    yml_content = yaml.safe_load(data)
+                    if isinstance(yml_content, dict) and 'proxies' in yml_content:
+                        raw_proxies = yml_content['proxies']
+                        for p in raw_proxies:
+                            # 【核心过滤】只有同时具备这四个核心要素的才是真节点
+                            if all(k in p for k in ['name', 'type', 'server', 'port']):
+                                # 剔除那些带有“流量、到期、选择”等干扰词的节点
+                                if not any(x in str(p['name']) for x in ['节点', '选择', '广告', '到期', '流量']):
+                                    all_proxies.append(p)
+                except:
+                    print(f"⚠️ {url} 不是标准 YAML，尝试备用方案...")
+                    continue
+            print(f"✅ 当前有效节点总数: {len(all_proxies)}")
+        except Exception as e:
+            print(f"❌ 抓取失败: {e}")
 
-                # Base64 解码逻辑保持不变
-                if "proxies" not in content and len(content) > 100:
-                    try:
-                        missing_padding = len(content) % 4
-                        if missing_padding: content += '=' * (4 - missing_padding)
-                        content = base64.b64decode(content).decode('utf-8')
-                    except: pass 
+    if not all_proxies:
+        print("❌ 完蛋，一个有效节点都没抓到，请检查订阅链接！")
+        return
 
-                for line in content.splitlines():
-                    s_line = line.strip()
-                    # 【关键修正】必须同时包含 name: 和 type: 才是真正的节点！
-                    # 这样就能过滤掉图 13-02-26 中那些“手动切换”之类的假节点
-                    if s_line.startswith("-") and "name:" in s_line and "type:" in s_line:
-                        nodes.append(s_line)
-                        name_match = re.search(r"name:\s*([^,}\s'\"]+|['\"][^'\"]+['\"])", s_line)
-                        if name_match: node_names.append(name_match.group(1))
-            print(f"✅ 成功提取有效节点: {len(node_names)}")
-        except: continue
-
-    # 构建 YAML
-    lines = ["proxies:"]
-    lines.extend([f"  {n}" if not n.startswith("  ") else n for n in nodes])
-    lines.append("proxy-groups:")
-    lines.append("  - name: 🚀 雅典娜全节点")
-    lines.append("    type: select")
-    lines.append("    proxies:")
-    lines.extend([f"      - {name}" for name in node_names])
-    lines.append("rules:")
-    lines.append("  - MATCH,🚀 雅典娜全节点")
+    # 组装成雅典娜专用的纯净配置文件
+    final_config = {
+        'allow-system-fake-dns': True,
+        'mixed-port': 7890,
+        'proxies': all_proxies,
+        'proxy-groups': [
+            {
+                'name': '🚀 雅典娜全节点',
+                'type': 'select',
+                'proxies': [p['name'] for p in all_proxies]
+            }
+        ],
+        'rules': ['MATCH,🚀 雅典娜全节点']
+    }
 
     with open("clash.yaml", "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-    print(f"🎉 雅典娜订阅合成完毕！共入库 {len(node_names)} 个真实节点。")
+        yaml.dump(final_config, f, allow_unicode=True, sort_keys=False)
+    
+    print(f"🏁 大功告成！已为大哥生成 {len(all_proxies)} 个纯净节点，格式完美。")
 
 if __name__ == "__main__":
     main()
