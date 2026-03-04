@@ -1,10 +1,5 @@
 {
   "crawl": {
-    "pages": [
-      {
-        "url": "https://gh-proxy.com/raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/nodev2ray.yaml" ,
-        "enable": true
-      }
-    ]
+    "pages": []
   }
 }
