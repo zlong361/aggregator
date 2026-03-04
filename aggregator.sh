@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "🚀 Start Aggregator Build"
+echo "Start aggregator"
 
-python aggregator.py
+python speed_filter.py
