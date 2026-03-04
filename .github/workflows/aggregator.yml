@@ -27,27 +27,33 @@ jobs:
       - name: Install System Tools
         run: |
           sudo apt update
-          sudo apt install -y curl wget git
+          sudo apt install -y curl wget git python3
 
-      - name: Install Python Packages
+      - name: Install Python Package
         run: pip install requests
 
-      # ⭐ 工业终极稳定 Clash 下载（防 API 解析失败）
-      - name: Download Latest Clash Core
+      # ⭐ 工业终极稳定 Clash 下载
+      - name: Download Clash Core
         run: |
-          echo "Downloading Clash Core"
+          echo "Start Clash Download"
 
-          CLASH_URL=$(curl -s https://api.github.com/repos/Dreamacro/clash/releases/latest | \
-          python3 -c "import sys, json; data=json.load(sys.stdin); print(next(
-          (a['browser_download_url'] for a in data['assets'] if 'linux-amd64' in a['name']),
-          '')
-          )")
+          CLASH_URL=$(curl -s https://api.github.com/repos/Dreamacro/clash/releases/latest | python3 - << 'EOF'
+import sys, json
+
+data = json.load(sys.stdin)
+
+for asset in data["assets"]:
+    if "linux-amd64" in asset["name"]:
+        print(asset["browser_download_url"])
+        break
+EOF
+)
 
           wget -O clash.gz "$CLASH_URL"
           gunzip clash.gz
           chmod +x clash
 
-      # ⭐ 运行采集核心
+      # ⭐ 运行主采集脚本
       - name: Run Aggregator Core
         run: python main.py
 
