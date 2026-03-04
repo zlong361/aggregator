@@ -9,6 +9,8 @@ concurrency:
   group: ${{ github.repository }}
   cancel-in-progress: true
 
+# 【关键点】全局环境变量只保留时区！
+# 彻底删除了 GIST_PAT 和 GIST_LINK，拔掉触发默认爬虫的“电源”
 env:
   TZ: Asia/Shanghai
 
@@ -32,9 +34,9 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Collect
-        # 【终极杀招】强制指定只加载配置文件，并使用 --skip 跳过所有内置爬虫
-        # 即使代码想爬，也会因为找不到指令而停止
-        run: python -u subscribe/collect.py --skip --source subscribe/config/config.default.json
+        # 【关键点】只保留最基础的运行指令和 --skip
+        # 没有任何多余参数，脚本只能乖乖去读你的 json 配置文件
+        run: python -u subscribe/collect.py --skip
 
       - name: Timestamp
         run: date
