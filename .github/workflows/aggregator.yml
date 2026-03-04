@@ -9,7 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
+
       - uses: actions/checkout@v3
 
       - name: Setup Python
@@ -17,13 +21,8 @@ jobs:
         with:
           python-version: 3.10
 
-      - name: Install Python deps
+      - name: Install dependencies
         run: pip install requests
-
-      - name: Run Aggregator
-        run: |
-          chmod +x aggregator.sh
-          bash aggregator.sh
 
       - name: Download Clash Core
         run: |
@@ -32,13 +31,13 @@ jobs:
           chmod +x clash-linux-amd64
           mv clash-linux-amd64 clash
 
-      - name: Speed Filter
-        run: python speed_filter.py
+      - name: Run Aggregator Speed Core
+        run: python main.py
 
-      - name: Push Result
+      - name: Commit Result
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          git add .
+          git add clash.yaml
           git commit -m "auto update"
           git push
