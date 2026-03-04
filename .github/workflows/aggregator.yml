@@ -1,4 +1,4 @@
-name: aggregator
+name: aggregator-industrial
 
 on:
   workflow_dispatch:
@@ -14,20 +14,29 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install System Tools
+        run: |
+          sudo apt update
+          sudo apt install -y curl wget git
+
+      - name: Install Python Packages
         run: pip install requests
 
-      - name: Download Clash Core
+      # ⭐ 工业级 Clash 自动下载（真正防 404）
+      - name: Download Latest Clash Core
         run: |
+          echo "Fetching latest Clash release..."
+
           CLASH_URL=$(curl -s https://api.github.com/repos/Dreamacro/clash/releases/latest \
             | grep browser_download_url \
             | grep linux-amd64 \
@@ -38,10 +47,12 @@ jobs:
           gunzip clash.gz
           chmod +x clash
 
-      - name: Run Aggregator Script
+      # ⭐ 运行你的主采集脚本
+      - name: Run Aggregator Core
         run: python main.py
 
-      - name: Commit Result
+      # ⭐ 工业级安全提交机制（防空 commit）
+      - name: Commit Output
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
