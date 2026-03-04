@@ -12,17 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # ① 运行原聚合脚本（生成 clash.yaml）
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Install Python deps
+        run: pip install requests
+
       - name: Run Aggregator
         run: |
           chmod +x aggregator.sh
           bash aggregator.sh
 
-      # ② 安装 Python 依赖
-      - name: Install Python deps
-        run: pip install requests
-
-      # ③ 下载 Clash Core
       - name: Download Clash Core
         run: |
           wget https://github.com/Dreamacro/clash/releases/latest/download/clash-linux-amd64.gz
@@ -30,15 +32,13 @@ jobs:
           chmod +x clash-linux-amd64
           mv clash-linux-amd64 clash
 
-      # ④ 运行测速过滤
       - name: Speed Filter
         run: python speed_filter.py
 
-      # ⑤ 提交到 output 分支
       - name: Push Result
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
           git add .
           git commit -m "auto update"
           git push
