@@ -9,10 +9,12 @@ concurrency:
   group: ${{ github.repository }}
   cancel-in-progress: true
 
-# 【关键点】全局环境变量只保留时区！
-# 彻底删除了 GIST_PAT 和 GIST_LINK，拔掉触发默认爬虫的“电源”
 env:
   TZ: Asia/Shanghai
+  # 【降维打击】强制覆盖脚本内部逻辑，彻底关闭爬虫
+  CRAWL_ENABLE: "false"
+  CRAWL_WANT_VLESS: "false"
+  CRAWL_WANT_HYSTERIA2: "false"
 
 jobs:
   process:
@@ -34,8 +36,7 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Collect
-        # 【关键点】只保留最基础的运行指令和 --skip
-        # 没有任何多余参数，脚本只能乖乖去读你的 json 配置文件
+        # 使用最原始的指令，配合 env 里的禁用逻辑
         run: python -u subscribe/collect.py --skip
 
       - name: Timestamp
