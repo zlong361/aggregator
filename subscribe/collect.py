@@ -2,73 +2,109 @@
 import os, json, urllib.request, re, base64
 
 def main():
-    print(f"🚀 雅典娜 AX6600：正在执行标准格式化抓取...")
+    print(f"🚀 雅典娜 AX6600 (Ultimate_Speed_V4_Fixed) 终极同步启动...")
     config_path = os.path.join(os.path.dirname(__file__), 'config/config.default.json')
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
     
     urls = [page['url'] for page in config.get('crawl', {}).get('pages', []) if page.get('enable')]
-    proxies_list, proxy_names = [], []
+    valid_proxy_blocks = []
+    proxy_names = []
     headers = {'User-Agent': 'Clash-Verge/1.3.8'}
 
     for url in urls:
         try:
+            print(f"📥 正在获取原生数据: {url}")
             req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=15) as res:
                 content = res.read().decode('utf-8', errors='ignore')
+                
+                # 兼容 Base64
                 if "proxies" not in content and len(content.strip()) > 64:
                     try: content = base64.b64decode(content + '==').decode('utf-8')
                     except: pass
 
-                # 暴力切割：按 "- name:" 切分
-                blocks = re.split(r'^-?\s*name:', content, flags=re.MULTILINE)
-                for block in blocks[1:]:
-                    if "type:" in block and "server:" in block:
-                        # --- 核心修正：重新构造标准 YAML 块 ---
-                        lines = block.strip().split('\n')
-                        name_line = lines[0].strip().strip("'\"")
+                # 【核心融合逻辑】：保留原生缩进，按块抓取
+                in_proxies = False
+                current_block = []
+                
+                for line in content.splitlines():
+                    if not line.strip(): continue
+                    
+                    # 侦测 proxies: 区域
+                    if re.match(r'^proxies:', line):
+                        in_proxies = True
+                        continue
+                    # 侦测到 rules: 或 proxy-groups: 就跳出当前源
+                    elif in_proxies and re.match(r'^[a-zA-Z0-9_-]+:', line):
+                        in_proxies = False
+                        continue
                         
-                        # 提取核心参数
-                        info = {"name": name_line}
-                        for l in lines[1:]:
-                            if ':' in l:
-                                k, v = l.split(':', 1)
-                                info[k.strip()] = v.strip()
-                        
-                        # 过滤掉广告
-                        if any(x in info['name'] for x in ["选择", "拦截", "官网", "流量"]): continue
-                        
-                        # 按照 Clash 标准缩进重新写死
-                        formatted = [f"  - name: \"{info['name']}\""]
-                        for key, value in info.items():
-                            if key != "name":
-                                formatted.append(f"    {key}: {value}")
-                        
-                        proxies_list.append("\n".join(formatted))
-                        proxy_names.append(info['name'])
-            print(f"✅ 成功提取并格式化: {len(proxy_names)} 个节点")
-        except: continue
+                    if in_proxies:
+                        # 只要遇到 "- name:" 或者 "- {" 就认为是新节点的开始
+                        if re.match(r'^\s*-\s*([\'"]?name[\'"]?:|\{)', line):
+                            if current_block:
+                                valid_proxy_blocks.append('\n'.join(current_block))
+                            current_block = [line] # 开启新块
+                        elif current_block:
+                            # 后续的 type, server, ws-opts 原样塞进去，绝不破坏它原来的空格！
+                            current_block.append(line)
+                            
+                # 补全最后一个节点
+                if current_block:
+                    valid_proxy_blocks.append('\n'.join(current_block))
 
-    # 构造最终 YAML
-    final_yaml = [
+        except Exception as e:
+            print(f"⚠️ 跳过 {url}")
+
+    # 过滤环节：踢出假节点
+    final_blocks = []
+    for block in valid_proxy_blocks:
+        # 只要有 type 就是真节点（解决之前的 missing type 报错）
+        if "type:" in block:
+            name_match = re.search(r'name:\s*([^,\n}]+)', block)
+            if name_match:
+                raw_name = name_match.group(1).strip(' \'"')
+                # 踢出广告
+                if not any(ad in raw_name for ad in ["选择", "拦截", "官网", "提示", "流量", "更新"]):
+                    final_blocks.append(block)
+                    proxy_names.append(raw_name)
+
+    print(f"🎯 精准过滤后剩余有效节点: {len(proxy_names)} 个")
+
+    # 组装配置文件
+    lines = [
         "allow-system-fake-dns: true",
         "mixed-port: 7890",
         "proxies:"
     ]
-    final_yaml.extend(proxies_list)
     
-    final_yaml.append("proxy-groups:")
-    final_yaml.append("  - name: 🚀 雅典娜全节点")
-    final_yaml.append("    type: select")
-    final_yaml.append("    proxies:")
-    for name in proxy_names:
-        final_yaml.append(f"      - \"{name}\"")
+    # 完美嵌入原生节点
+    for block in final_blocks:
+        # 如果有些源顶格写了 - name，我们帮它往右推两格，其他的保留原样
+        if block.startswith('-'):
+            lines.append('\n'.join('  ' + line for line in block.splitlines()))
+        else:
+            lines.append(block)
+
+    lines.append("proxy-groups:")
+    lines.append("  - name: 🚀 雅典娜全节点")
+    lines.append("    type: select")
+    lines.append("    proxies:")
     
-    final_yaml.append("rules:\n  - MATCH,🚀 雅典娜全节点")
+    if proxy_names:
+        for name in proxy_names:
+            lines.append(f"      - \"{name}\"")
+    else:
+        lines.append("      - DIRECT")
+        
+    lines.append("rules:")
+    lines.append("  - MATCH,🚀 雅典娜全节点")
 
     with open("clash.yaml", "w", encoding="utf-8") as f:
-        f.write("\n".join(final_yaml))
-    print(f"🏁 格式化完成！生成的 clash.yaml 现在绝对标准。")
+        f.write("\n".join(lines))
+        
+    print(f"🏁 Ultimate_Speed_V4_Fixed 生成完毕，格式锁死！")
 
 if __name__ == "__main__":
     main()
