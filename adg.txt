@@ -1154,3 +1154,141 @@ ip6tables -I FORWARD -p udp --dport 443 -j DROP^$important
 ！新加
 
 ||v*-ex-reading-video.fqnovelvod.com^$important
+
+! --- 绝杀字节系带签名的广告大图 (byteimg 节点) ---
+||*-ad-sign.byteimg.com^$important
+
+! --- [1] 先精准封杀带广告签名的图片节点 (优先级最高) ---
+||*-ad-sign.byteimg.com^$important
+||*-webcast-sign.douyinpic.com^$important
+
+! --- [2] 精准放行：只给非广告的图片发通行证 ---
+! 这样既能看封面，又不会漏过广告
+@@||byteimg.com^$domain=~*-ad-sign.byteimg.com
+@@||douyinpic.com^$domain=~*-webcast-sign.douyinpic.com
+
+! --- 绝杀番茄小说全系视频广告流 (VOD 节点) ---
+||fqnovelvod.com^$important
+||qznovelvod.com^$important
+
+! --- [1] 绝杀：番茄与七猫的所有视频广告服务器 (VOD) ---
+||fqnovelvod.com^$important
+||qznovelvod.com^$important
+
+! --- [2] 绝杀：字节系所有带签名的广告资源 ---
+||*-ad-sign.byteimg.com^$important
+||*-webcast-sign.douyinpic.com^$important
+
+! --- [3] 精准放行：只给“正经”图片发绿卡 (排除掉带 sign 的广告) ---
+@@||byteimg.com^$domain=~*-ad-sign.byteimg.com
+@@||douyinpic.com^$domain=~*-webcast-sign.douyinpic.com
+
+! --- 绝杀：字节系 Gravity 广告投放引擎的视频流 ---
+||pull-flv-gravity-*.douyincdn.com^$important
+||*-gravity-*.douyincdn.com^$important
+
+! --- 检查并确保没有宽泛的白名单，如果有，改成下面这样精准的 ---
+! @@||douyincdn.com^$important  <-- 这行如果是这样，必须删掉！
+
+||ad.snssdk.com^
+||ads.snssdk.com^
+||ad.toutiao.com^
+||pangolin.snssdk.com^
+||pangle.io^
+||pglstatp.com^
+||pglstatp-toutiao.com^
+||log.snssdk.com^
+||mon.snssdk.com^
+||rtlog.snssdk.com^
+||extlog.snssdk.com^
+||*/obj/ad-pattern*^
+||*/obj/container-ad*^
+
+
+! 说明：去除番茄小说开屏、信息流、穿山甲广告
+
+! ===== 番茄小说必要放行 =====
+@@||reading.snssdk.com^$app=com.dragon.read
+@@||*.fqnovelvod.com^
+@@||lf-fe.fqnovelstatic.com^$app=com.dragon.read
+@@||tos-p*-v.byteimg.com^$app=com.dragon.read
+@@||lf3-reading.fqnovel.com^
+@@||lf6-reading.fqnovel.com^
+
+! ===== 穿山甲广告 =====
+||pangolin.snssdk.com^
+||pangle.io^
+||pglstatp.com^
+||pglstatp-toutiao.com^
+
+! ===== 头条广告 =====
+||ad.snssdk.com^
+||ads.snssdk.com^
+||ad.toutiao.com^
+
+! ===== 统计广告 =====
+||log.snssdk.com^
+||mon.snssdk.com^
+||rtlog.snssdk.com^
+||extlog.snssdk.com^
+
+! ===== 通用广告接口 =====
+||*/obj/ad-pattern*^
+||*/obj/container-ad*^
+||*/api/ad/*
+
+! ===== 开屏广告 =====
+||*/splash*
+||*/launchad*
+||*/startupad*
+
+! ===== 视频广告 =====
+||*/reward_video*
+||*/full_screen_video*
+||*/ad/video*
+
+! ===== 推荐广告 =====
+||*/feed/ad*
+||*/stream/ad*
+||*/ad/list*
+
+! ===== 穿山甲广告核心 =====
+||pangolin.snssdk.com^
+||pangle.io^
+||pglstatp.com^
+||pglstatp-toutiao.com^
+
+! ===== 头条广告 =====
+||ad.snssdk.com^
+||ads.snssdk.com^
+||ad.toutiao.com^
+
+! ===== 广告统计 =====
+||log.snssdk.com^
+||mon.snssdk.com^
+||rtlog.snssdk.com^
+||extlog.snssdk.com^
+
+! ===== 开屏广告 =====
+||*/splash*
+||*/launch*
+||*/startup*
+
+! ===== 视频广告 =====
+||*/reward*
+||*/fullscreen*
+||*/video_ad*
+
+! ===== 信息流广告 =====
+||*/feed/ad*
+||*/stream/ad*
+||*/ad/get*
+
+! ===== 广告资源 =====
+||*/banner/ad*
+||*/popup/ad*
+||*/api/ad*
+
+! ===== 兜底 =====
+||*/advert*
+||*/promotion*
