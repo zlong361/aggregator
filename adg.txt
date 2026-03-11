@@ -1208,12 +1208,12 @@ ip6tables -I FORWARD -p udp --dport 443 -j DROP^$important
 ! 说明：去除番茄小说开屏、信息流、穿山甲广告
 
 ! ===== 番茄小说必要放行 =====
-@@||reading.snssdk.com^$app=com.dragon.read
-@@||*.fqnovelvod.com^
-@@||lf-fe.fqnovelstatic.com^$app=com.dragon.read
-@@||tos-p*-v.byteimg.com^$app=com.dragon.read
-@@||lf3-reading.fqnovel.com^
-@@||lf6-reading.fqnovel.com^
+！@@||reading.snssdk.com^$app=com.dragon.read
+！@@||*.fqnovelvod.com^
+！@@||lf-fe.fqnovelstatic.com^$app=com.dragon.read
+！@@||tos-p*-v.byteimg.com^$app=com.dragon.read
+！@@||lf3-reading.fqnovel.com^
+！@@||lf6-reading.fqnovel.com^
 
 ! ===== 穿山甲广告 =====
 ||pangolin.snssdk.com^
@@ -1251,44 +1251,3 @@ ip6tables -I FORWARD -p udp --dport 443 -j DROP^$important
 ||*/feed/ad*
 ||*/stream/ad*
 ||*/ad/list*
-
-! ===== 穿山甲广告核心 =====
-||pangolin.snssdk.com^
-||pangle.io^
-||pglstatp.com^
-||pglstatp-toutiao.com^
-
-! ===== 头条广告 =====
-||ad.snssdk.com^
-||ads.snssdk.com^
-||ad.toutiao.com^
-
-! ===== 广告统计 =====
-||log.snssdk.com^
-||mon.snssdk.com^
-||rtlog.snssdk.com^
-||extlog.snssdk.com^
-
-! ===== 开屏广告 =====
-||*/splash*
-||*/launch*
-||*/startup*
-
-! ===== 视频广告 =====
-||*/reward*
-||*/fullscreen*
-||*/video_ad*
-
-! ===== 信息流广告 =====
-||*/feed/ad*
-||*/stream/ad*
-||*/ad/get*
-
-! ===== 广告资源 =====
-||*/banner/ad*
-||*/popup/ad*
-||*/api/ad*
-
-! ===== 兜底 =====
-||*/advert*
-||*/promotion*
