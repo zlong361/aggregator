@@ -1,0 +1,29 @@
+name: Clash Speed Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10
+
+    - name: Install deps
+      run: pip install requests
+
+    - name: Download Clash Core
+      run: |
+        wget https://github.com/Dreamacro/clash/releases/latest/download/clash-linux-amd64.gz
+        gunzip clash-linux-amd64.gz
+        chmod +x clash-linux-amd64
+        mv clash-linux-amd64 clash
+
+    - name: Run Speed Test
+      run: python speedtest.py
