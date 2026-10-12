@@ -1,0 +1,12 @@
+- name: Install Python deps
+  run: pip install requests
+
+- name: Download Clash Core
+  run: |
+    wget https://github.com/Dreamacro/clash/releases/latest/download/clash-linux-amd64.gz
+    gunzip clash-linux-amd64.gz
+    chmod +x clash-linux-amd64
+    mv clash-linux-amd64 clash
+
+- name: Speed Filter
+  run: python speed_filter.py

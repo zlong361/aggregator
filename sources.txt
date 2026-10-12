@@ -1,0 +1,2295 @@
+! =====================================================================
+! 🚀 GEMINI & GOOGLE 全球服务特赦白名单 (最高优先级)
+! =====================================================================
+
+@@||gemini.google.com^$important
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||upload.googleapis.com^$important
+@@||apis.google.com^$important
+@@||clients*.google.com^$important
+@@||client-channel.google.com^$important
+@@||googleusercontent.com^$important
+@@||doc-00-5s-docs.googleusercontent.com^$important
+@@||gemini.google.com/log*^$important
+@@||gemini.google.com/analytics*^$important
+@@||lh3.googleusercontent.com^$important
+@@||photos.google.com^$important
+@@||docs.google.com^$important
+@@||drive.google.com^$important
+@@||accounts.google.com^$important
+@@||oauth2.googleapis.com^$important
+@@||identitytoolkit.googleapis.com^$important
+@@||play.google.com^$important
+@@||android.clients.google.com^$important
+@@||dl.google.com^$important
+@@||update.googleapis.com^$important
+@@||gstatic.com^$important
+@@||fonts.googleapis.com^$important
+@@||fonts.gstatic.com^$important
+@@||generativelanguage.googleapis.com^$important
+@@||up.audio.google.com^$important
+@@||colab.research.google.com^$important
+@@||google.com^$important
+
+! =====================================================================
+! 🟢 常用国内平台与路由器局域网精准白名单
+! =====================================================================
+
+@@||taobao.com^$important,domain=~wcp.taobao.com|~adash.m.taobao.com|~amdc.m.taobao.com
+@@||jd.com^$important,domain=~jzt.jd.com|~ad.m.jd.com|~ads.m.jd.com
+@@||tmall.com^$important
+@@||flyme.cn^$important
+@@||meizu.com^$important
+@@||wl.jd.com^$important
+@@||flydigi.com^
+@@||000714.xyz^
+@@||blueskyxn.com^
+@@|https://$client=192.168.1.1/24
+
+! =====================================================================
+! 🔴 强力狙击区：字节系 / 番茄小说 / 抖音 广告核心
+! =====================================================================
+
+! —— 书城跳转与插屏 API ——
+
+||fqnovel.com/api/ad*^$important
+||fqnovel.com/reading/advert*^$important
+||api*-normal-*.fqnovel.com^$important
+||*.fqnovel.com/api/advert*^$important
+||api5-normal-lf.fqnovel.com/api/ad*^$important
+||api5-normal-lf.fqnovel.com/reading/advert*^$important
+||api3-normal-lf.fqnovel.com/api/ad*^$important
+||api3-normal-lf.fqnovel.com/reading/advert*^$important
+||api*-sinfnormal.fqnovel.com^$important,app=com.dragon.read
+||api5-normal-sinfonlinec.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+||api*-normal-sinfonline*.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+
+! —— 核心组件与遥测数据上报 ——
+
+||applog.dragonread.com^$important
+||track.dragonread.com^$important
+||*-ad-sign.byteimg.com^$important
+||ad.byteimg.com^$important
+||ad.zijieapi.com^$important
+||ad.toutiao.com^$important
+||ad.xigua.com^$important
+||ad.api.pstatp.com^$important
+||i-ads.snssdk.com^$important
+||is.snssdk.com^$important
+||*sdk*api*.-ad-*.snssdk.com^$important
+||*sdk*api*.-ad-*.pstatp.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||sf9-ttcdn-tos.pstatp.com^$important
+||v3-dy-ad-y.ad.toutiao.com^$important
+||v6-dy-ad-y.ad.toutiao.com^$important
+||pangolin-sdk-toutiao.com^$important
+||pangolin-sdk-toutiao-b.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.cn^$important
+||pangle.io^$important
+
+! —— 精准限制 snssdk (避免与视频放行冲突) ——
+
+||*.snssdk.com^$app=com.dragon.read,important
+! =====================================================================
+! 🔴 字节补充拦截区（去重合并稳定版）
+! =====================================================================
+
+||mssdk.zijieapi.com^$app=com.dragon.read,important
+||lf3-reading.fqnovelpic.com^$app=com.dragon.read,important
+||*applog*.*.*^$app=com.dragon.read,important
+||feedback-c.zijieapi.com^$app=com.dragon.read,important
+||ads*-normal-*.zijieapi.com^$app=com.dragon.read,important
+||*pstatp*^$app=com.dragon.read,important
+||dig.bdurl.net^$app=com.dragon.read,important
+||*ttweb*^$app=com.dragon.read,important
+||mssdk.volces.com^$app=com.dragon.read,important
+||mon.snssdk.com^$app=com.dragon.read,important
+||toblog.ctobsnssdk.com^$app=com.dragon.read,important
+||mon.zijieapi.com^$app=com.dragon.read,important
+||dig.zjurl.cn^$app=com.dragon.read,important
+||gecko*.zijieapi.com^$app=com.dragon.read,important
+||polaris.zijieapi.com^$app=com.dragon.read,important
+||lf*-webcast-cdn-tos-ncdn.bytegecko.com^$app=com.dragon.read,important
+||bsync3-normal-hl.zijieapi.com^$app=com.dragon.read,important
+||p*.douyinpic.com^$app=com.dragon.read,important
+||mon*-misc-*.fqnovel.com^$app=com.dragon.read,important
+
+! —— 放行小说正文必须节点（防误杀） ——
+
+@@||reading.snssdk.com^$important,app=com.dragon.read
+@@||lf-fe.fqnovelstatic.com^$important,app=com.dragon.read
+@@||lf-normal-gr-sourcecdn.bytegecko.com^$important,app=com.dragon.read
+@@||security.snssdk.com^$important,app=com.dragon.read
+@@||lf-sourcecdn-tos.bytegecko.com^$important,app=com.dragon.read
+
+! =====================================================================
+! 🟡 购物电商系：淘宝 / 京东 / 拼多多 / 饿了么
+! =====================================================================
+
+! —— 淘宝 / 阿里 ——
+
+||wcp.taobao.com^$important
+||wcp.tmall.com^$important
+||wcp.alicdn.com^$important
+||poplayer.taobao.com^$important
+||amdc.m.taobao.com^$important
+||amdc.wapa.taobao.com^$important
+||amdc.alipay.com^$important
+||adash.m.taobao.com^$important
+||adashx.m.taobao.com^$important
+||tanx.com^$important
+||alimama.com^$important
+||mmstat.com^$important
+||nbsdk-baichuan.alicdn.com^$important
+||tunion-api.m.taobao.com^$important
+||audid-api.taobao.com^$important
+||beacon-api.aliyuncs.com^$important
+
+! —— 京东 ——
+
+||jzt.jd.com^$important
+||ad.m.jd.com^$important
+||ads.m.jd.com^$important
+||xlog.jd.com^
+||dsp-x.jd.com^
+||mercury.jd.com^
+||d.jd.com^
+||api.m.jd.com/client.action?functionId=ad*^$important
+
+! —— 饿了么 / 拼多多 ——
+
+||adash.m.ele.me^$important
+||p.ele.me^$important
+||ad.ele.me^$important
+||mtop.ele.me.device.deviceguid.get^$important
+||t-ads.pinduoduo.com^$important
+||api.pinduoduo.com/api/ad*^$important
+||pinduoduo.com^$app=com.xunmeng.pinduoduo
+||msg.71.am^$important
+||s.dianping.com^$important
+! =====================================================================
+! 💣 知乎开屏倒计时专项（合并去重终极稳定版）
+! =====================================================================
+
+! —— 核心广告 API（已合并重复规则） ——
+
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/feeds/ad*^$important
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/launch*^$important
+||zhihu.com/api/v4/questions/*/ad*^$important
+||zhihu.com/api/v4/topstory/feed*^$important
+||api.zhihu.com/ad*^$important
+||advert.zhihu.com^$important
+
+! —— 广告素材 CDN ——
+
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||video.zhimg.com/ad*^$important
+
+! —— 第三方监测（知乎常借用） ——
+
+||mi.gdt.qq.com^$important
+||win.gdt.qq.com^$important
+||pgl.snssdk.com^$important
+
+! —— 物理隐藏知乎开屏 View（去重合并） ——
+
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##.ad-container
+com.zhihu.android##[id*="splash"]
+com.zhihu.android##[class*="SplashAd"]
+
+! =====================================================================
+! 🚫 全网大厂与系统级联盟 SDK
+! =====================================================================
+
+! —— 新浪 / 美团 / B站 / 网易 / 爱奇艺 ——
+
+||adapi.sina.com.cn^$important
+||u1.sinaimg.cn^$important
+||sax.sina.com.cn^$important
+||ad.meituan.com^$important
+||flow.meituan.com^
+||cm.bilibili.com^$important
+||iad.g.163.com^$important
+||gorgon.youdao.com^$important
+||crash.163.com^$important
+||stat.music.163.com^$important
+||adash.163.com^$important
+||t7z.cupid.iqiyi.com^$important
+
+! —— 腾讯广点通 ——
+
+||gdt.qq.com^$important
+||adsmind.gdtimg.com^$important
+||pgdt.ugdtimg.com^$important
+||c.gdt.qq.com^$important
+||t.gdt.qq.com^$important
+||v.gdt.qq.com^$important
+||w.gdt.qq.com^$important
+||szmg.qq.com^$important
+||splashqqlive.gtimg.com^$important
+||mtrace.qq.com^$important
+||btrace.qq.com^$important
+||pingma.qq.com^$important
+||tdw.qq.com^$important
+
+! —— 百度百青藤 ——
+
+||mobads.baidu.com^$important
+||mobads-logs.baidu.com^$important
+||pos.baidu.com^$important
+||dup.baidustatic.com^$important
+||cpro.baidustatic.com^$important
+||afd.baidu.com^$important
+||als.baidu.com^$important
+||cpu.baidu.com^$important
+||wn.pos.baidu.com^$important
+||bce.baidu.com^$important
+
+! —— 快手 ——
+
+||e.kuaishou.com^$important
+||adx.e.kuaishou.com^$important
+||sdk.e.kuaishou.com^$important
+||v.adkwai.com^$important
+
+! —— Google Ads ——
+
+||pagead2.googlesyndication.com^$important
+||adservice.google.com^$important
+||google-analytics.com^$important
+||googletagmanager.com^$important
+||googlesyndication.com^$important
+||doubleclick.net^$important
+
+! =====================================================================
+! 📱 手机厂商系统广告
+! =====================================================================
+
+! 华为
+||ad.dbankcloud.cn^$important
+||ad.dbankcloud.com^$important
+||metrics.data.hicloud.com^$important
+||metrics2.data.hicloud.com^$important
+
+! 小米
+||sdkconfig.ad.xiaomi.com^$important
+||ad.mi.com^$important
+||adv.sec.miui.com^$important
+||o2o.api.xiaomi.com^$important
+||bss.pandora.xiaomi.com^$important
+||ad.xiaomi.com^$important
+||stat.xiaomi.com^$important
+
+! OPPO
+||ams.oppomobile.com^$important
+||adsfs.oppomobile.com^$important
+||adx.ads.oppomobile.com^$important
+||cdo-comm.heytapmobile.com^$important
+
+! VIVO
+||ads.service.vivo.com.cn^$important
+||adlog.vivo.com.cn^$important
+||st.vivo.com.cn^$important
+||vnet.vivo.com.cn^$important
+
+! 智能电视 / 乐播投屏
+||logonext.tv.kuyun.com^$important
+||config.kuyun.com^$important
+||ad.hpplay.cn^$important
+||adeng.hpplay.cn^$important
+||rp.hpplay.cn^$important
+
+! =====================================================================
+! ☢️ 第三方行为追踪与大数据
+! =====================================================================
+
+||log.umtrack.com^$important
+||applog.umeng.com^$important
+||ulogs.umeng.com^$important
+||tracking.talkingdata.com^$important
+||app.talkingdata.com^$important
+||sdk.open.jpush.cn^$important
+||x.getui.com^$important
+||ynuf.alipay.com^$important
+||mdskip.taobao.com^$important
+||toblog.snssdk.com^$important
+||bds.snssdk.com^$important
+||crash.snssdk.com^$important
+||api.adnet.mob.com^$important
+||ws.ad.cmvideo.cn^$important
+||log.snssdk.com^$important
+||rtlog.snssdk.com^$important
+! =====================================================================
+! 🍅 番茄小说专项：终极“屠龙”加固包
+! =====================================================================
+
+! —— 1. 彻底斩断番茄深层广告调度与穿山甲联盟 API（全量封杀） ——
+
+||api-access.pangolin-sdk-toutiao.com^$important
+||api-access.pangolin-sdk-toutiao-b.com^$important
+||bds.snssdk.com^$important
+||gts.snssdk.com^$important
+||mon.zijieapi.com^$important
+||mon.snssdk.com^$important
+||lf-webcast-sourcecdn-tos.bytegecko.com^$important
+||lf-webcast-cdn-tos-ncdn.bytegecko.com^$important
+||ads3-normal-lf.zijieapi.com^$important
+||ads5-normal-lf.zijieapi.com^$important
+
+! —— 2. 封杀番茄小说插屏图文、开屏缓存池与视频流素材 ——
+
+||p1-ad-sign.byteimg.com^$important
+||p2-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||v*-dy-ad-y.ad.toutiao.com^$important
+
+! —— 3. 番茄小说强力 UI 物理隐藏（针对漏网之鱼） ——
+
+com.dragon.read##.ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash"]
+com.dragon.read##[id*="ad_view"]
+com.dragon.read##[id*="ad_container"]
+com.dragon.read##[id*="banner_ad"]
+com.dragon.read##[id*="tt_ad"]
+com.dragon.read##[id*="tt_reward"]
+
+! —— 4. 稳定白名单（确保小说正文和听书功能防误杀） ——
+
+@@||novel.snssdk.com^$important
+@@||lf-fe.fqnovelstatic.com^$important
+@@||v*-default.fqnovelpic.com^$important
+@@||tos-v*.snssdk.com^$important
+@@||p*-novel-sign.byteimg.com^$important
+
+! =====================================================================
+! 🛒 京东开屏倒计时专项“死刑”加固包
+! =====================================================================
+
+! —— 1. 精准绞杀京东动态开屏 API ——
+
+||api.m.jd.com/client.action?functionId=start*^$important
+||api.m.jd.com/client.action?functionId=getSplashAd*^$important
+||api.m.jd.com/client.action?functionId=ad*^$important
+||api.m.jd.com/client.action?functionId=welcomeHome*^$important
+
+! —— 2. 封杀京东新增的商业化联盟与追踪域名 ——
+
+||pa.jd.com^$important
+||kepler.jd.com^$important
+||keplerapi.jd.com^$important
+||api.m.jd.care^$important
+
+! —— 3. 拦截京东第三方广告下发（腾讯通道） ——
+
+||v.gdt.qq.com^$important
+||mi.gdt.qq.com^$important
+
+! —— 4. 强制物理隐藏京东 App 开屏与弹窗元件 ——
+
+com.jingdong.app.mall##.splash-ad-container
+com.jingdong.app.mall##[id*="splash"]
+com.jingdong.app.mall##[id*="ad_"]
+com.jingdong.app.mall##[class*="SplashAd"]
+
+! =====================================================================
+! 🍿 红果/番茄短剧专项：内容疏通补丁
+! =====================================================================
+
+! —— 1. 恢复字节跳动视频流核心域名（这是看视频必须的） ——
+
+@@||v*.snssdk.com^$important
+@@||v*.pstatp.com^$important
+@@||*-tos.snssdk.com^$important
+@@||bytegecko.com^$important
+@@||volces.com^$important
+@@||byteimg.com^$important
+
+! —— 2. 专项放行红果/番茄短剧的业务接口 ——
+
+@@||novel.snssdk.com^$important
+@@||api*-normal-*.fqnovel.com^$important
+@@||lf*-tos.pstatp.com^$important
+
+! —— 3. 再次补刀：确保虽然放行了节点，但广告域名依然死锁 ——
+
+||api-access.pangolin-sdk-toutiao.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.io^$important
+
+! —— 4. 强制隐藏番茄小说内部广告占位符（新增布局名称） ——
+
+com.dragon.read##.reward_video_ad
+com.dragon.read##.listen_ad_container
+com.dragon.read##.book_read_ad_view
+com.dragon.read##[id*="ad_view_holder"]
+com.dragon.read##[id*="ad_wrapper"]
+com.dragon.read##.bottom_banner_ad
+com.dragon.read##.interstitial_ad
+
+! —— 5. 封杀红果/番茄通用的“看广告解锁”逻辑接口 ——
+
+||api*-normal-*.fqnovel.com/api/v1/task/reward*^$important
+
+! —— 6. 封杀番茄小说/红果短剧的激励视频素材域名 ——
+
+||fqnovelvod.com^$important
+||v*-hl-*-reading-video.fqnovelvod.com^$important
+
+! —— 7. 封杀番茄/红果调用的第三方伪装 CDN 广告素材 ——
+
+||itunessaing.qtlcdn.com^$important
+||*.qtlcdn.com^$important,domain=~qiniu.com
+
+! —— 8. 封杀乱码类的第三方广告追踪/下发域名（indevs.in 系列） ——
+
+||indevs.in^$important
+||*.indevs.in^$important
+
+! —— 9. 封杀第三方 CDN 伪装广告素材（qnydns.com 系列） ——
+
+||qnydns.com^$important
+||Allcdn.lv2.qnydns.com^$important
+
+! —— 10. 保持抖音/红果视频流畅通（防误杀加固） ——
+
+@@||douyincdn.com^$important
+@@||pull-flv*.douyincdn.com^$important
+
+! =====================================================================
+! 🔨 大哥专项：今日日志精准补刀包
+! =====================================================================
+
+! —— 1. 绝杀：乱码类与可疑后缀广告源 ——
+
+||ccgfw.top^$important
+||indevs.in^$important
+
+! —— 2. 特赦：确保番茄小说/红果内容加载（防误杀） ——
+
+@@||p*-novel.byteimg.com^$important
+@@||p*-reading-sign.fqnovelpic.com^$important
+@@||douyincdn.com^$important
+@@||open.douyin.com^$important
+
+! —— 3. 特赦：苹果系统基础服务（防误伤） ——
+
+@@||iphone-ld.apple.com^$important
+
+! —— 4. 再次强调：阻断那些伪装成苹果域名的广告素材 ——
+
+||itunessaing.qtlcdn.com^$important
+
+! —— 5. 既然 ecombdimg 主要是电商广告，咱们限制它在番茄小说里出现 ——
+
+||ecombdimg.com^$important,domain=com.dragon.read|com.hn.read
+
+! —— 6. 封杀字节跳动所有的“非核心”广告下发前缀（用通配符） ——
+
+||p*-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||p*-be-pack-sign.pglstatp-toutiao.com^$important
+
+! —— 7. 绝杀：直接切断番茄小说的广告请求路径（不管它换什么域名） ——
+
+/api/ad/union/sdk/v1/list^$important
+/api/ad/v1/get_ads^$important
+/reading/advert/config^$important
+
+! =====================================================================
+! 📱 手机小说/短视频广告补充
+! =====================================================================
+
+! —— 1. 插页广告（全面清除） ——
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[id*="splash_ad"]
+com.dragon.read##.ad-container
+com.dragon.read##.interstitial_ad
+com.dragon.read##[id*="ad_popup"]
+com.dragon.read##[class*="FullScreenAd"]
+com.dragon.read##.ad-slot
+
+! —— 2. 下方占位广告（底部横幅） ——
+com.dragon.read##.bottom-banner-ad
+com.dragon.read##[id*="ad_banner"]
+com.dragon.read##.sticky-ad
+com.dragon.read##.bottom-ad-container
+com.dragon.read##.banner-ad-container
+com.dragon.read##[class*="Ad-bottom"]
+com.dragon.read##[id*="bottom_ad"]
+
+! —— 3. 短视频广告的强制全屏插入 ——
+com.shortvideo.app##.full-screen-video-ad
+com.shortvideo.app##.ads-video-overlay
+com.shortvideo.app##[class*="VideoAd"]
+com.shortvideo.app##[id*="ad_frame"]
+com.shortvideo.app##.video-ad-container
+com.shortvideo.app##.video-ads-banner
+com.shortvideo.app##[class*="video-ad-overlay"]
+com.shortvideo.app##[id*="ad_video"]
+
+! —— 4. 插页广告（针对短视频应用） ——
+com.shortvideo.app##.video-ad-container
+com.shortvideo.app##.video-interstitial-ad
+com.shortvideo.app##[id*="video_ad_fullscreen"]
+com.shortvideo.app##[class*="VideoAdBanner"]
+com.shortvideo.app##[class*="SplashAd"]
+
+! —— 5. 强制跳过短视频广告（如果存在强制计时） ——
+com.shortvideo.app##[id*="skip_button"]
+com.shortvideo.app##[class*="skip-ad"]
+com.shortvideo.app##[id*="ad_skip_button"]
+! =====================================================================
+! 📱 手机 App 深度视觉净化补丁 (0305 最终补刀)
+! =====================================================================
+
+! —— 1. 番茄小说：清除书架与阅读页的“金币/悬浮窗”干扰 ——
+! 这些规则能把屏幕上那些晃来晃去的“领金币”小球、活动悬浮窗精准挖掉
+com.dragon.read##.float_red_packet
+com.dragon.read##.reading_widget_container
+com.dragon.read##.activity_entry_view
+com.dragon.read##[id*="red_packet"]
+com.dragon.read##.bottom_tab_red_dot
+
+! —— 2. 字节跳动：封杀最新的隐私追踪与预加载广告 (防止防不胜防) ——
+||dig.bdurl.net^$important
+||verification.snssdk.com^$important
+||api-access.pangolin-sdk-toutiao*.com^$important
+||toblog.snssdk.com^$important
+
+! —— 3. 京东：物理隐藏“我的”页面多余的商业化入口 ——
+! 隐藏“京东特价”、“领券中心”等干扰项（按需选择，如果不嫌烦可不加）
+com.jingdong.app.mall##[id*="personal_content_layout"] [text*="广告"]
+com.jingdong.app.mall##.personal_icon_ad
+
+! —— 4. 解决“应用商店”自动下载广告插件的通道 ——
+! 很多 App 会通过系统自带的推送通道下发广告，这里堵死几个主流通道
+||push.m.jd.com^$important
+||api.push.sm.cn^$important
+||jpush.cn^$important
+||umengcloud.com^$important
+
+! —— 5. 针对你刚才抓到的“阿里云 OSS”广告仓库的最终锁定 ——
+! 既然广告喜欢躲在阿里云，咱们把带 ad 字样的素材路全部堵死
+||*.oss-enet.aliyuncs.com/ad/*^$important
+||*.oss-enet.aliyuncs.com/*_ad_*^$important
+
+! =====================================================================
+! 🚀 GEMINI & GOOGLE 全球服务特赦白名单 (最高优先级)
+! =====================================================================
+
+@@||gemini.google.com^$important
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||upload.googleapis.com^$important
+@@||apis.google.com^$important
+@@||clients*.google.com^$important
+@@||client-channel.google.com^$important
+@@||googleusercontent.com^$important
+@@||doc-00-5s-docs.googleusercontent.com^$important
+@@||gemini.google.com/log*^$important
+@@||gemini.google.com/analytics*^$important
+@@||lh3.googleusercontent.com^$important
+@@||photos.google.com^$important
+@@||docs.google.com^$important
+@@||drive.google.com^$important
+@@||accounts.google.com^$important
+@@||oauth2.googleapis.com^$important
+@@||identitytoolkit.googleapis.com^$important
+@@||play.google.com^$important
+@@||android.clients.google.com^$important
+@@||dl.google.com^$important
+@@||update.googleapis.com^$important
+@@||gstatic.com^$important
+@@||fonts.googleapis.com^$important
+@@||fonts.gstatic.com^$important
+@@||generativelanguage.googleapis.com^$important
+@@||up.audio.google.com^$important
+@@||colab.research.google.com^$important
+@@||google.com^$important
+
+! =====================================================================
+! 🟢 常用国内平台与路由器局域网精准白名单
+! =====================================================================
+
+@@||taobao.com^$important,domain=~wcp.taobao.com|~adash.m.taobao.com|~amdc.m.taobao.com
+@@||jd.com^$important,domain=~jzt.jd.com|~ad.m.jd.com|~ads.m.jd.com
+@@||tmall.com^$important
+@@||flyme.cn^$important
+@@||meizu.com^$important
+@@||wl.jd.com^$important
+@@||flydigi.com^
+@@||000714.xyz^
+@@||blueskyxn.com^
+@@|https://$client=192.168.1.1/24
+
+! =====================================================================
+! 🔴 强力狙击区：字节系 / 番茄小说 / 抖音 广告核心
+! =====================================================================
+
+! —— 书城跳转与插屏 API ——
+
+||fqnovel.com/api/ad*^$important
+||fqnovel.com/reading/advert*^$important
+||api*-normal-*.fqnovel.com^$important
+||*.fqnovel.com/api/advert*^$important
+||api5-normal-lf.fqnovel.com/api/ad*^$important
+||api5-normal-lf.fqnovel.com/reading/advert*^$important
+||api3-normal-lf.fqnovel.com/api/ad*^$important
+||api3-normal-lf.fqnovel.com/reading/advert*^$important
+||api*-sinfnormal.fqnovel.com^$important,app=com.dragon.read
+||api5-normal-sinfonlinec.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+||api*-normal-sinfonline*.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+
+! —— 核心组件与遥测数据上报 ——
+
+||applog.dragonread.com^$important
+||track.dragonread.com^$important
+||*-ad-sign.byteimg.com^$important
+||ad.byteimg.com^$important
+||ad.zijieapi.com^$important
+||ad.toutiao.com^$important
+||ad.xigua.com^$important
+||ad.api.pstatp.com^$important
+||i-ads.snssdk.com^$important
+||is.snssdk.com^$important
+||*sdk*api*.-ad-*.snssdk.com^$important
+||*sdk*api*.-ad-*.pstatp.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||sf9-ttcdn-tos.pstatp.com^$important
+||v3-dy-ad-y.ad.toutiao.com^$important
+||v6-dy-ad-y.ad.toutiao.com^$important
+||pangolin-sdk-toutiao.com^$important
+||pangolin-sdk-toutiao-b.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.cn^$important
+||pangle.io^$important
+
+! —— 精准限制 snssdk (避免与视频放行冲突) ——
+
+||*.snssdk.com^$app=com.dragon.read,important
+! =====================================================================
+! 🔴 字节补充拦截区（去重合并稳定版）
+! =====================================================================
+
+||mssdk.zijieapi.com^$app=com.dragon.read,important
+||lf3-reading.fqnovelpic.com^$app=com.dragon.read,important
+||*applog*.*.*^$app=com.dragon.read,important
+||feedback-c.zijieapi.com^$app=com.dragon.read,important
+||ads*-normal-*.zijieapi.com^$app=com.dragon.read,important
+||*pstatp*^$app=com.dragon.read,important
+||dig.bdurl.net^$app=com.dragon.read,important
+||*ttweb*^$app=com.dragon.read,important
+||mssdk.volces.com^$app=com.dragon.read,important
+||mon.snssdk.com^$app=com.dragon.read,important
+||toblog.ctobsnssdk.com^$app=com.dragon.read,important
+||mon.zijieapi.com^$app=com.dragon.read,important
+||dig.zjurl.cn^$app=com.dragon.read,important
+||gecko*.zijieapi.com^$app=com.dragon.read,important
+||polaris.zijieapi.com^$app=com.dragon.read,important
+||lf*-webcast-cdn-tos-ncdn.bytegecko.com^$app=com.dragon.read,important
+||bsync3-normal-hl.zijieapi.com^$app=com.dragon.read,important
+||p*.douyinpic.com^$app=com.dragon.read,important
+||mon*-misc-*.fqnovel.com^$app=com.dragon.read,important
+
+! —— 放行小说正文必须节点（防误杀） ——
+
+@@||reading.snssdk.com^$important,app=com.dragon.read
+@@||lf-fe.fqnovelstatic.com^$important,app=com.dragon.read
+@@||lf-normal-gr-sourcecdn.bytegecko.com^$important,app=com.dragon.read
+@@||security.snssdk.com^$important,app=com.dragon.read
+@@||lf-sourcecdn-tos.bytegecko.com^$important,app=com.dragon.read
+
+! =====================================================================
+! 🟡 购物电商系：淘宝 / 京东 / 拼多多 / 饿了么
+! =====================================================================
+
+! —— 淘宝 / 阿里 ——
+
+||wcp.taobao.com^$important
+||wcp.tmall.com^$important
+||wcp.alicdn.com^$important
+||poplayer.taobao.com^$important
+||amdc.m.taobao.com^$important
+||amdc.wapa.taobao.com^$important
+||amdc.alipay.com^$important
+||adash.m.taobao.com^$important
+||adashx.m.taobao.com^$important
+||tanx.com^$important
+||alimama.com^$important
+||mmstat.com^$important
+||nbsdk-baichuan.alicdn.com^$important
+||tunion-api.m.taobao.com^$important
+||audid-api.taobao.com^$important
+||beacon-api.aliyuncs.com^$important
+
+! —— 京东 ——
+
+||jzt.jd.com^$important
+||ad.m.jd.com^$important
+||ads.m.jd.com^$important
+||xlog.jd.com^
+||dsp-x.jd.com^
+||mercury.jd.com^
+||d.jd.com^
+||api.m.jd.com/client.action?functionId=ad*^$important
+
+! —— 饿了么 / 拼多多 ——
+
+||adash.m.ele.me^$important
+||p.ele.me^$important
+||ad.ele.me^$important
+||mtop.ele.me.device.deviceguid.get^$important
+||t-ads.pinduoduo.com^$important
+||api.pinduoduo.com/api/ad*^$important
+||pinduoduo.com^$app=com.xunmeng.pinduoduo
+||msg.71.am^$important
+||s.dianping.com^$important
+! =====================================================================
+! 💣 知乎开屏倒计时专项（合并去重终极稳定版）
+! =====================================================================
+
+! —— 核心广告 API（已合并重复规则） ——
+
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/feeds/ad*^$important
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/launch*^$important
+||zhihu.com/api/v4/questions/*/ad*^$important
+||zhihu.com/api/v4/topstory/feed*^$important
+||api.zhihu.com/ad*^$important
+||advert.zhihu.com^$important
+
+! —— 广告素材 CDN ——
+
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||video.zhimg.com/ad*^$important
+
+! —— 第三方监测（知乎常借用） ——
+
+||mi.gdt.qq.com^$important
+||win.gdt.qq.com^$important
+||pgl.snssdk.com^$important
+
+! —— 物理隐藏知乎开屏 View（去重合并） ——
+
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##.ad-container
+com.zhihu.android##[id*="splash"]
+com.zhihu.android##[class*="SplashAd"]
+
+! =====================================================================
+! 🚫 全网大厂与系统级联盟 SDK
+! =====================================================================
+
+! —— 新浪 / 美团 / B站 / 网易 / 爱奇艺 ——
+
+||adapi.sina.com.cn^$important
+||u1.sinaimg.cn^$important
+||sax.sina.com.cn^$important
+||ad.meituan.com^$important
+||flow.meituan.com^
+||cm.bilibili.com^$important
+||iad.g.163.com^$important
+||gorgon.youdao.com^$important
+||crash.163.com^$important
+||stat.music.163.com^$important
+||adash.163.com^$important
+||t7z.cupid.iqiyi.com^$important
+
+! —— 腾讯广点通 ——
+
+||gdt.qq.com^$important
+||adsmind.gdtimg.com^$important
+||pgdt.ugdtimg.com^$important
+||c.gdt.qq.com^$important
+||t.gdt.qq.com^$important
+||v.gdt.qq.com^$important
+||w.gdt.qq.com^$important
+||szmg.qq.com^$important
+||splashqqlive.gtimg.com^$important
+||mtrace.qq.com^$important
+||btrace.qq.com^$important
+||pingma.qq.com^$important
+||tdw.qq.com^$important
+
+! —— 百度百青藤 ——
+
+||mobads.baidu.com^$important
+||mobads-logs.baidu.com^$important
+||pos.baidu.com^$important
+||dup.baidustatic.com^$important
+||cpro.baidustatic.com^$important
+||afd.baidu.com^$important
+||als.baidu.com^$important
+||cpu.baidu.com^$important
+||wn.pos.baidu.com^$important
+||bce.baidu.com^$important
+
+! —— 快手 ——
+
+||e.kuaishou.com^$important
+||adx.e.kuaishou.com^$important
+||sdk.e.kuaishou.com^$important
+||v.adkwai.com^$important
+
+! —— Google Ads ——
+
+||pagead2.googlesyndication.com^$important
+||adservice.google.com^$important
+||google-analytics.com^$important
+||googletagmanager.com^$important
+||googlesyndication.com^$important
+||doubleclick.net^$important
+
+! =====================================================================
+! 📱 手机厂商系统广告
+! =====================================================================
+
+! 华为
+||ad.dbankcloud.cn^$important
+||ad.dbankcloud.com^$important
+||metrics.data.hicloud.com^$important
+||metrics2.data.hicloud.com^$important
+
+! 小米
+||sdkconfig.ad.xiaomi.com^$important
+||ad.mi.com^$important
+||adv.sec.miui.com^$important
+||o2o.api.xiaomi.com^$important
+||bss.pandora.xiaomi.com^$important
+||ad.xiaomi.com^$important
+||stat.xiaomi.com^$important
+
+! OPPO
+||ams.oppomobile.com^$important
+||adsfs.oppomobile.com^$important
+||adx.ads.oppomobile.com^$important
+||cdo-comm.heytapmobile.com^$important
+
+! VIVO
+||ads.service.vivo.com.cn^$important
+||adlog.vivo.com.cn^$important
+||st.vivo.com.cn^$important
+||vnet.vivo.com.cn^$important
+
+! 智能电视 / 乐播投屏
+||logonext.tv.kuyun.com^$important
+||config.kuyun.com^$important
+||ad.hpplay.cn^$important
+||adeng.hpplay.cn^$important
+||rp.hpplay.cn^$important
+
+! =====================================================================
+! ☢️ 第三方行为追踪与大数据
+! =====================================================================
+
+||log.umtrack.com^$important
+||applog.umeng.com^$important
+||ulogs.umeng.com^$important
+||tracking.talkingdata.com^$important
+||app.talkingdata.com^$important
+||sdk.open.jpush.cn^$important
+||x.getui.com^$important
+||ynuf.alipay.com^$important
+||mdskip.taobao.com^$important
+||toblog.snssdk.com^$important
+||bds.snssdk.com^$important
+||crash.snssdk.com^$important
+||api.adnet.mob.com^$important
+||ws.ad.cmvideo.cn^$important
+||log.snssdk.com^$important
+||rtlog.snssdk.com^$important
+! =====================================================================
+! 🍅 番茄小说专项：终极“屠龙”加固包
+! =====================================================================
+
+! —— 1. 彻底斩断番茄深层广告调度与穿山甲联盟 API（全量封杀） ——
+
+||api-access.pangolin-sdk-toutiao.com^$important
+||api-access.pangolin-sdk-toutiao-b.com^$important
+||bds.snssdk.com^$important
+||gts.snssdk.com^$important
+||mon.zijieapi.com^$important
+||mon.snssdk.com^$important
+||lf-webcast-sourcecdn-tos.bytegecko.com^$important
+||lf-webcast-cdn-tos-ncdn.bytegecko.com^$important
+||ads3-normal-lf.zijieapi.com^$important
+||ads5-normal-lf.zijieapi.com^$important
+
+! —— 2. 封杀番茄小说插屏图文、开屏缓存池与视频流素材 ——
+
+||p1-ad-sign.byteimg.com^$important
+||p2-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||v*-dy-ad-y.ad.toutiao.com^$important
+
+! —— 3. 番茄小说强力 UI 物理隐藏（针对漏网之鱼） ——
+
+com.dragon.read##.ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash"]
+com.dragon.read##[id*="ad_view"]
+com.dragon.read##[id*="ad_container"]
+com.dragon.read##[id*="banner_ad"]
+com.dragon.read##[id*="tt_ad"]
+com.dragon.read##[id*="tt_reward"]
+
+! —— 4. 稳定白名单（确保小说正文和听书功能防误杀） ——
+
+@@||novel.snssdk.com^$important
+@@||lf-fe.fqnovelstatic.com^$important
+@@||v*-default.fqnovelpic.com^$important
+@@||tos-v*.snssdk.com^$important
+@@||p*-novel-sign.byteimg.com^$important
+
+! =====================================================================
+! 🛒 京东开屏倒计时专项“死刑”加固包
+! =====================================================================
+
+! —— 1. 精准绞杀京东动态开屏 API ——
+
+||api.m.jd.com/client.action?functionId=start*^$important
+||api.m.jd.com/client.action?functionId=getSplashAd*^$important
+||api.m.jd.com/client.action?functionId=ad*^$important
+||api.m.jd.com/client.action?functionId=welcomeHome*^$important
+
+! —— 2. 封杀京东新增的商业化联盟与追踪域名 ——
+
+||pa.jd.com^$important
+||kepler.jd.com^$important
+||keplerapi.jd.com^$important
+||api.m.jd.care^$important
+
+! —— 3. 拦截京东第三方广告下发（腾讯通道） ——
+
+||v.gdt.qq.com^$important
+||mi.gdt.qq.com^$important
+
+! —— 4. 强制物理隐藏京东 App 开屏与弹窗元件 ——
+
+com.jingdong.app.mall##.splash-ad-container
+com.jingdong.app.mall##[id*="splash"]
+com.jingdong.app.mall##[id*="ad_"]
+com.jingdong.app.mall##[class*="SplashAd"]
+
+! =====================================================================
+! 🍿 红果/番茄短剧专项：内容疏通补丁
+! =====================================================================
+
+! —— 1. 恢复字节跳动视频流核心域名（这是看视频必须的） ——
+
+@@||v*.snssdk.com^$important
+@@||v*.pstatp.com^$important
+@@||*-tos.snssdk.com^$important
+@@||bytegecko.com^$important
+@@||volces.com^$important
+@@||byteimg.com^$important
+
+! —— 2. 专项放行红果/番茄短剧的业务接口 ——
+
+@@||novel.snssdk.com^$important
+@@||api*-normal-*.fqnovel.com^$important
+@@||lf*-tos.pstatp.com^$important
+
+! —— 3. 再次补刀：确保虽然放行了节点，但广告域名依然死锁 ——
+
+||api-access.pangolin-sdk-toutiao.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.io^$important
+
+! —— 4. 强制隐藏番茄小说内部广告占位符（新增布局名称） ——
+
+com.dragon.read##.reward_video_ad
+com.dragon.read##.listen_ad_container
+com.dragon.read##.book_read_ad_view
+com.dragon.read##[id*="ad_view_holder"]
+com.dragon.read##[id*="ad_wrapper"]
+com.dragon.read##.bottom_banner_ad
+com.dragon.read##.interstitial_ad
+
+! —— 5. 封杀红果/番茄通用的“看广告解锁”逻辑接口 ——
+
+||api*-normal-*.fqnovel.com/api/v1/task/reward*^$important
+
+! —— 6. 封杀番茄小说/红果短剧的激励视频素材域名 ——
+
+||fqnovelvod.com^$important
+||v*-hl-*-reading-video.fqnovelvod.com^$important
+
+! —— 7. 封杀番茄/红果调用的第三方伪装 CDN 广告素材 ——
+
+||itunessaing.qtlcdn.com^$important
+||*.qtlcdn.com^$important,domain=~qiniu.com
+
+! —— 8. 封杀乱码类的第三方广告追踪/下发域名（indevs.in 系列） ——
+
+||indevs.in^$important
+||*.indevs.in^$important
+
+! —— 9. 封杀第三方 CDN 伪装广告素材（qnydns.com 系列） ——
+
+||qnydns.com^$important
+||Allcdn.lv2.qnydns.com^$important
+
+! —— 10. 保持抖音/红果视频流畅通（防误杀加固） ——
+
+@@||douyincdn.com^$important
+@@||pull-flv*.douyincdn.com^$important
+
+! =====================================================================
+! 🔨 大哥专项：今日日志精准补刀包
+! =====================================================================
+
+! —— 1. 绝杀：乱码类与可疑后缀广告源 ——
+
+||ccgfw.top^$important
+||indevs.in^$important
+
+! —— 2. 特赦：确保番茄小说/红果内容加载（防误杀） ——
+
+@@||p*-novel.byteimg.com^$important
+@@||p*-reading-sign.fqnovelpic.com^$important
+@@||douyincdn.com^$important
+@@||open.douyin.com^$important
+
+! —— 3. 特赦：苹果系统基础服务（防误伤） ——
+
+@@||iphone-ld.apple.com^$important
+
+! —— 4. 再次强调：阻断那些伪装成苹果域名的广告素材 ——
+
+||itunessaing.qtlcdn.com^$important
+
+! —— 5. 既然 ecombdimg 主要是电商广告，咱们限制它在番茄小说里出现 ——
+
+||ecombdimg.com^$important,domain=com.dragon.read|com.hn.read
+
+! —— 6. 封杀字节跳动所有的“非核心”广告下发前缀（用通配符） ——
+
+||p*-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||p*-be-pack-sign.pglstatp-toutiao.com^$important
+
+! —— 7. 绝杀：直接切断番茄小说的广告请求路径（不管它换什么域名） ——
+
+/api/ad/union/sdk/v1/list^$important
+/api/ad/v1/get_ads^$important
+/reading/advert/config^$important
+
+! =====================================================================
+! 📱 手机小说/短视频广告补充
+! =====================================================================
+
+! —— 1. 插页广告（全面清除） ——
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[id*="splash_ad"]
+com.dragon.read##.ad-container
+com.dragon.read##.interstitial_ad
+com.dragon.read##[id*="ad_popup"]
+com.dragon.read##[class*="FullScreenAd"]
+com.dragon.read##.ad-slot
+
+! —— 2. 下方占位广告（底部横幅） ——
+com.dragon.read##.bottom-banner-ad
+com.dragon.read##[id*="ad_banner"]
+com.dragon.read##.sticky-ad
+com.dragon.read##.bottom-ad-container
+com.dragon.read##.banner-ad-container
+com.dragon.read##[class*="Ad-bottom"]
+com.dragon.read##[id*="bottom_ad"]
+
+! —— 3. 短视频广告的强制全屏插入 ——
+com.shortvideo.app##.full-screen-video-ad
+com.shortvideo.app##.ads-video-overlay
+com.shortvideo.app##[class*="VideoAd"]
+com.shortvideo.app##[id*="ad_frame"]
+com.shortvideo.app##.video-ad-container
+com.shortvideo.app##.video-ads-banner
+com.shortvideo.app##[class*="video-ad-overlay"]
+com.shortvideo.app##[id*="ad_video"]
+
+! —— 4. 插页广告（针对短视频应用） ——
+com.shortvideo.app##.video-ad-container
+com.shortvideo.app##.video-interstitial-ad
+com.shortvideo.app##[id*="video_ad_fullscreen"]
+com.shortvideo.app##[class*="VideoAdBanner"]
+com.shortvideo.app##[class*="SplashAd"]
+
+! —— 5. 强制跳过短视频广告（如果存在强制计时） ——
+com.shortvideo.app##[id*="skip_button"]
+com.shortvideo.app##[class*="skip-ad"]
+com.shortvideo.app##[id*="ad_skip_button"]
+! =====================================================================
+! 📱 手机 App 深度视觉净化补丁 (0305 最终补刀)
+! =====================================================================
+
+! —— 1. 番茄小说：清除书架与阅读页的“金币/悬浮窗”干扰 ——
+! 这些规则能把屏幕上那些晃来晃去的“领金币”小球、活动悬浮窗精准挖掉
+com.dragon.read##.float_red_packet
+com.dragon.read##.reading_widget_container
+com.dragon.read##.activity_entry_view
+com.dragon.read##[id*="red_packet"]
+com.dragon.read##.bottom_tab_red_dot
+
+! —— 2. 字节跳动：封杀最新的隐私追踪与预加载广告 (防止防不胜防) ——
+||dig.bdurl.net^$important
+||verification.snssdk.com^$important
+||api-access.pangolin-sdk-toutiao*.com^$important
+||toblog.snssdk.com^$important
+
+! —— 3. 京东：物理隐藏“我的”页面多余的商业化入口 ——
+! 隐藏“京东特价”、“领券中心”等干扰项（按需选择，如果不嫌烦可不加）
+com.jingdong.app.mall##[id*="personal_content_layout"] [text*="广告"]
+com.jingdong.app.mall##.personal_icon_ad
+
+! —— 4. 解决“应用商店”自动下载广告插件的通道 ——
+! 很多 App 会通过系统自带的推送通道下发广告，这里堵死几个主流通道
+||push.m.jd.com^$important
+||api.push.sm.cn^$important
+||jpush.cn^$important
+||umengcloud.com^$important
+
+! —— 5. 针对你刚才抓到的“阿里云 OSS”广告仓库的最终锁定 ——
+! 既然广告喜欢躲在阿里云，咱们把带 ad 字样的素材路全部堵死
+||*.oss-enet.aliyuncs.com/ad/*^$important
+||*.oss-enet.aliyuncs.com/*_ad_*^$important
+! =====================================================================
+! 🔨 大哥专项：针对恶意隧道与境外乱码域名的斩首包
+! =====================================================================
+
+! —— 1. 绝杀：针对你抓到的 tunnel 系列隧道 ——
+||qqa678.com^$important
+||*.qqa678.com^$important
+
+! —— 2. 绝杀：恶意广告与统计域名 (top/ir/co 后缀) ——
+||okgfw.top^$important
+||ascwt179.com^$important
+||hdacd.com^$important
+||avaaaal.ir^$important
+||gamingserverstream.ir^$important
+||samanehha.co^$important
+! —— 3. 封杀：莫名其妙的 NTP 时间同步 (防止某些广告插件对时) ——
+||uk.pool.ntp.org^$important
+! =====================================================================
+! 🔨 大哥专项：针对 10:41 分这种“瞬时高频攻击”的加固补丁
+! =====================================================================
+
+! —— 1. 既然有大量拦截，说明广告商在尝试“爆破”，咱们直接封锁它们的根源 ——
+||ads.pangle.io^$important
+||api-access.pangolin-sdk-toutiao*.com^$important
+||is.snssdk.com^$important
+||dig.bdurl.net^$important
+
+! —— 2. 封杀手机 App 内部极其隐蔽的“心跳/上报”域名 (减少日志里的已处理条数) ——
+||crash.snssdk.com^$important
+||app-measurement.com^$important
+||logs.snssdk.com^$important
+||mon.zijieapi.com^$important
+
+! —— 3. 针对京东/番茄小说这种“已拦截”非常多的 App，补充正则拦截 ——
+! 这样可以一次性处理掉成千上万个变种子域名
+/^(.+)\.ecombdimg\.com$/$important
+/^(.+)\.fqnovelpic\.com$/$important,domain=~fqnovel.com
+! =====================================================================
+! 🚀 GEMINI & GOOGLE 全球服务特赦白名单 (最高优先级) 
+! 📌 解决：上传附件失败、同步异常、页面卡加载等问题
+! =====================================================================
+! —— Gemini 核心上传与会话通道 ——
+@@||gemini.google.com^$important
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||upload.googleapis.com^$important
+@@||apis.google.com^$important
+@@||clients*.google.com^$important
+@@||client-channel.google.com^$important
+@@||googleusercontent.com^$important
+@@||doc-00-5s-docs.googleusercontent.com^$important
+! —— 修复上传时被 log 拦截规则误杀的问题（彻底覆盖拦截） ——
+@@||gemini.google.com/log*^$important
+@@||gemini.google.com/analytics*^$important
+! —— 补全文件存储与预览接口 ——
+@@||lh3.googleusercontent.com^$important
+@@||photos.google.com^$important
+@@||docs.google.com^$important
+@@||drive.google.com^$important
+! —— Google 账号认证及基础服务通畅 ——
+@@||accounts.google.com^$important
+@@||oauth2.googleapis.com^$important
+@@||identitytoolkit.googleapis.com^$important
+@@||play.google.com^$important
+@@||android.clients.google.com^$important
+@@||dl.google.com^$important
+@@||update.googleapis.com^$important
+@@||gstatic.com^$important
+@@||fonts.googleapis.com^$important
+@@||fonts.gstatic.com^$important
+@@||generativelanguage.googleapis.com^$important
+@@||up.audio.google.com^$important
+@@||colab.research.google.com^$important
+@@||google.com^$important
+! =====================================================================
+! 🟢 常用国内平台与路由器局域网精准白名单
+! =====================================================================
+@@||taobao.com^$important,domain=~wcp.taobao.com|~adash.m.taobao.com|~amdc.m.taobao.com
+@@||jd.com^$important,domain=~jzt.jd.com|~ad.m.jd.com|~ads.m.jd.com
+@@||tmall.com^$important
+@@||flyme.cn^$important
+@@||meizu.com^$important
+@@||wl.jd.com^$important
+@@||flydigi.com^
+@@||000714.xyz^
+@@||blueskyxn.com^
+@@|https://$client=192.168.1.1/24
+! =====================================================================
+! 🔴 强力狙击区：字节系 / 番茄小说 / 抖音 广告核心
+! 📌 整合了你多次追加的番茄小说与字节穿山甲 API 拦截
+! =====================================================================
+! —— 书城跳转与插屏 API 专项 ——
+||fqnovel.com/api/ad*^$important
+||fqnovel.com/reading/advert*^$important
+||api*-normal-*.fqnovel.com^$important
+||*.fqnovel.com/api/advert*^$important
+||api5-normal-lf.fqnovel.com/api/ad*^$important
+||api5-normal-lf.fqnovel.com/reading/advert*^$important
+||api3-normal-lf.fqnovel.com/api/ad*^$important
+||api3-normal-lf.fqnovel.com/reading/advert*^$important
+||api*-sinfnormal.fqnovel.com^$important,app=com.dragon.read
+||api5-normal-sinfonlinec.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+||api*-normal-sinfonline*.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+! —— 核心组件与遥测数据上报 ——
+||applog.dragonread.com^$important
+||track.dragonread.com^$important
+||*-ad-sign.byteimg.com^$important
+||p3-ad-sign.byteimg.com^$important
+||p6-ad-sign.byteimg.com^$important
+||p9-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p3-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p6-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p9-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p*-novel-sign.byteimg.com/novel-pic/$important,app=com.dragon.read
+||ad.byteimg.com^$important
+||ad.zijieapi.com^$important
+||ad.toutiao.com^$important
+||ad.xigua.com^$important
+||ad.api.pstatp.com^$important
+||i-ads.snssdk.com^$important
+||is.snssdk.com^$important
+||*sdk*api*.-ad-*.snssdk.com^$important
+||*sdk*api*.-ad-*.pstatp.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||sf9-ttcdn-tos.pstatp.com^$important
+||v3-dy-ad-y.ad.toutiao.com^$important
+||v6-dy-ad-y.ad.toutiao.com^$important
+||pangolin-sdk-toutiao.com^$important
+||pangolin-sdk-toutiao-b.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.cn^$important
+||pangle.io^$important
+||log-api.pangolin-sdk-toutiao-b.com^
+! —— GitHub 原始屠龙刀补充规则 ——
+||*static*^$app=com.dragon.read,important
+||*sealaly*^$app=com.dragon.read,important
+||*toutiao*^$app=com.dragon.read,important
+||*bsgslb*^$app=com.dragon.read,important
+||*misc*^$app=com.dragon.read,important
+||*douyin*^$app=com.dragon.read,important
+||*ecombd*^$app=com.dragon.read,important
+||*byte*^$app=com.dragon.read,important
+||*0kkkkkt*^$app=com.dragon.read,important
+||*cjjd14*^$app=com.dragon.read,important
+||*ietheivaicai*^$app=com.dragon.read,important
+||*stream*^$app=com.dragon.read,important
+||*siomxity*^$app=com.dragon.read,important
+/[a-zA-Z0-9.-]*-normal\.zijieapi\.com/
+||mssdk.zijieapi.com^$app=com.dragon.read,important
+||lf3-reading.fqnovelpic.com^$app=com.dragon.read,important
+||*applog*.*.*^$app=com.dragon.read,important
+||feedback-c.zijieapi.com^$app=com.dragon.read,important
+||ads*-normal-*.zijieapi.com^$app=com.dragon.read,important
+||*pstatp*^$app=com.dragon.read,important
+||dig.bdurl.net^$app=com.dragon.read,important
+||*qtaeixd*^$app=com.dragon.read,important
+||*erer*^$app=com.dragon.read,important
+||*ttweb*^$app=com.dragon.read,important
+||*sinfonlinec*^$important,app=com.dragon.read
+||mssdk.volces.com^$app=com.dragon.read,important
+||mon.snssdk.com^$app=com.dragon.read,important
+||toblog.ctobsnssdk.com^$app=com.dragon.read,important
+||mon.zijieapi.com^$app=com.dragon.read,important
+||dig.zjurl.cn^$app=com.dragon.read,important
+||gecko*.zijieapi.com^$app=com.dragon.read,important
+||polaris.zijieapi.com^$app=com.dragon.read,important
+||snssdk.com^$app=com.dragon.read,important
+||lf*-webcast-cdn-tos-ncdn.bytegecko.com^$app=com.dragon.read,important
+||bsync3-normal-hl.zijieapi.com^$app=com.dragon.read,important
+||p*.douyinpic.com^$app=com.dragon.read,important
+||ecombdimg.com^$app=com.dragon.read,important
+||mon*-misc-*.fqnovel.com^$app=com.dragon.read,important
+@@||reading.snssdk.com^$important,app=com.dragon.read
+@@||lf-fe.fqnovelstatic.com^$important,app=com.dragon.read
+@@||lf-normal-gr-sourcecdn.bytegecko.com^$important,app=com.dragon.read
+@@||security.snssdk.com^$important,app=com.dragon.read
+@@||lf-sourcecdn-tos.bytegecko.com^$important,app=com.dragon.read
+! =====================================================================
+! 🟡 购物电商系：淘宝 / 京东 / 拼多多 / 饿了么
+! =====================================================================
+! —— 淘宝 / 阿里 跳转核心 ——
+||wcp.taobao.com^$important
+||wcp.tmall.com^$important
+||wcp.alicdn.com^$important
+||poplayer.taobao.com^$important
+||amdc.m.taobao.com^$important
+||amdc.wapa.taobao.com^$important
+||amdc.alipay.com^$important
+||adash.m.taobao.com^$important
+||adashx.m.taobao.com^$important
+||tanx.com^$important
+||alimama.com^$important
+||mmstat.com^$important
+||nbsdk-baichuan.alicdn.com^$important
+||tunion-api.m.taobao.com^$important
+||audid-api.taobao.com^$important
+||beacon-api.aliyuncs.com^$important
+! —— 京东核心 ——
+||jzt.jd.com^$important
+||ad.m.jd.com^$important
+||ads.m.jd.com^$important
+||xlog.jd.com^
+||dsp-x.jd.com^
+||mercury.jd.com^
+||d.jd.com^
+||api.m.jd.com/client.action?functionId=ad*
+! —— 饿了么 / 拼多多 / 其他 ——
+||adash.m.ele.me^$important
+||p.ele.me^$important
+||ad.ele.me^$important
+||mtop.ele.me.device.deviceguid.get^$important
+||t-ads.pinduoduo.com^$important
+||api.pinduoduo.com/api/ad*
+||pinduoduo.com^$app=com.xunmeng.pinduoduo
+||msg.71.am^$important
+||s.dianping.com^$important
+! =====================================================================
+! 💣 知乎开屏倒计时专项“核打击”规则 (合并去重增强版)
+! =====================================================================
+! —— 封杀知乎全新的广告调度与数据监控 API ——
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/feeds/ad*^$important
+||zhihu.com/api/v4/splash_ad*^$important
+||zhihu.com/api/v4/questions/*/ad*^$important
+||zhihu.com/api/v4/topstory/feed*^$important
+||zhihu.com/api/v4/notifications/count^$important
+||zhihu.com/api/v4/me^$important
+||zhihu.com/api/v4/short_video*^$important
+! —— 封杀知乎所有广告图片内容节点及特定 CDN ——
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||zhimg.com^$important,domain=ad
+||zhihu-app.com^$important
+||miao.zhihu.com^$important
+||sugar.zhihu.com^$important
+||appcloud2.zhihu.com^$important
+! =====================================================================
+! 🚫 全网大厂与系统级联盟 SDK (拦截开屏、横幅及流氓素材)
+! =====================================================================
+! —— 新浪 / 美团 / B站 / 爱奇艺 / 网易 ——
+||adapi.sina.com.cn^$important
+||u1.sinaimg.cn^$important
+||sax.sina.com.cn^$important
+||ad.meituan.com^$important
+||flow.meituan.com^
+||cm.bilibili.com^$important
+||iad.g.163.com^$important
+||gorgon.youdao.com^$important
+||crash.163.com^$important
+||stat.music.163.com^$important
+||adash.163.com^$important
+||t7z.cupid.iqiyi.com^$important
+! —— 腾讯广点通及系暗哨 ——
+||gdt.qq.com^$important
+||adsmind.gdtimg.com^$important
+||mi.gdt.qq.com^$important
+||pgdt.ugdtimg.com^$important
+||win.gdt.qq.com^$important
+||c.gdt.qq.com^$important
+||t.gdt.qq.com^$important
+||v.gdt.qq.com^$important
+||w.gdt.qq.com^$important
+||szmg.qq.com^$important
+||splashqqlive.gtimg.com^$important
+||mtrace.qq.com^$important
+||btrace.qq.com^$important
+||pingma.qq.com^$important
+||tdw.qq.com^$important
+! —— 百度百青藤 ——
+||mobads.baidu.com^$important
+||mobads-logs.baidu.com^$important
+||pos.baidu.com^$important
+||dup.baidustatic.com^$important
+||cpro.baidustatic.com^$important
+||afd.baidu.com^$important
+||als.baidu.com^$important
+||cpu.baidu.com^$important
+||wn.pos.baidu.com^$important
+||bce.baidu.com^$important
+! —— 快手 SDK 深层素材补充 ——
+||e.kuaishou.com^$important
+||adx.e.kuaishou.com^$important
+||sdk.e.kuaishou.com^$important
+||open.e.kuaishou.com^
+||p1-lm.adkwai.com^
+||v.adkwai.com^$important
+! —— Google Ads (如无需点击搜索广告请保持拦截) ——
+||pagead2.googlesyndication.com^$important
+||adservice.google.com^$important
+||google-analytics.com^$important
+||googletagmanager.com^$important
+||googlesyndication.com^$important
+||doubleclick.net^$important
+! =====================================================================
+! 📱 手机大厂底层 (华米OV) 与智能电视霸主
+! =====================================================================
+! 华为
+||ad.dbankcloud.cn^$important
+||ad.dbankcloud.com^$important
+||metrics.data.hicloud.com^$important
+||metrics2.data.hicloud.com^$important
+! 小米
+||sdkconfig.ad.xiaomi.com^$important
+||ad.mi.com^$important
+||adv.sec.miui.com^$important
+||o2o.api.xiaomi.com^$important
+||bss.pandora.xiaomi.com^$important
+||ad.xiaomi.com^$important
+||stat.xiaomi.com^$important
+! OPPO
+||ams.oppomobile.com^$important
+||adsfs.oppomobile.com^$important
+||adx.ads.oppomobile.com^$important
+||cdo-comm.heytapmobile.com^$important
+! VIVO
+||ads.service.vivo.com.cn^$important
+||adlog.vivo.com.cn^$important
+||st.vivo.com.cn^$important
+||vnet.vivo.com.cn^$important
+! 智能电视/乐播投屏
+||logonext.tv.kuyun.com^$important
+||config.kuyun.com^$important
+||ad.hpplay.cn^$important
+||adeng.hpplay.cn^$important
+||rp.hpplay.cn^$important
+! =====================================================================
+! ☢️ 深水区：第三方行为画像与大数据追踪 (友盟、个推等)
+! =====================================================================
+||log.umtrack.com^$important
+||applog.umeng.com^$important
+||ulogs.umeng.com^$important
+||tracking.talkingdata.com^$important
+||app.talkingdata.com^$important
+||sdk.open.jpush.cn^$important
+||x.getui.com^$important
+||ynuf.alipay.com^$important
+||mdskip.taobao.com^$important
+||toblog.snssdk.com^$important
+||bds.snssdk.com^$important
+||crash.snssdk.com^$important
+||api.adnet.mob.com^$important
+||ws.ad.cmvideo.cn^$important
+||log.snssdk.com^$important
+||rtlog.snssdk.com^$important
+! =====================================================================
+! 🛠️ 历史稳定域名过滤 (遗留强效底子)
+! =====================================================================
+||topnewsfeeds.net^
+||nbryb.com^
+||superbdolly.com^
+||salutationcheerlessdemote.com^
+||buildingdoodlesquare.com^
+||colonistnobilityheroic.com^
+||5hz.org^
+! =====================================================================
+! ✂️ UI 隐藏规则 (物理隐藏各大 App 开屏广告位占位符)
+! =====================================================================
+com.dragon.read##.splash-ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash_ad"]
+com.dragon.read##.ad_container
+com.dragon.read##.article-ad-card
+com.taobao.taobao##.splash-ad-container
+com.taobao.taobao##[class*="SplashAd"]
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##[id*="splash_ad"]
+com.zhihu.android##[class*="SplashAd"]
+com.zhihu.android##.ad_full_screen_layout
+! =====================================================================
+! 🔨 知乎专项：绝杀加固包 (针对知乎开屏反复跳出的终极补丁)
+! =====================================================================
+! —— 封杀知乎广告分发的核心域名（绝不留情） ——
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/launch*^$important
+||api.zhihu.com/ad*^$important
+||advert.zhihu.com^$important
+! —— 封杀知乎广告素材加载（拦截图片和视频素材） ——
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||video.zhimg.com/ad*^$important
+! —— 封杀第三方监测（知乎调用第三方来倒计时） ——
+||mi.gdt.qq.com^$important
+||win.gdt.qq.com^$important
+||pgl.snssdk.com^$important
+! —— 强制物理隐藏知乎 App 开屏 View ——
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##.ad-container
+com.zhihu.android##[id*="splash"]
+com.zhihu.android##[class*="SplashAd"]
+! =====================================================================
+! 🔨 知乎专项：暴力加固追加包 (针对 HTTPDNS 与 动态域名)
+! =====================================================================
+! —— 1. 全量封杀知乎所有可能的 API 子域名 ——
+||api.zhihu.com^$important
+||api.zhihu.com.cdn.cloudflare.net^$important
+||api-fanyi.zhihu.com^$important
+||mqtt.zhihu.com^$important
+||push.zhihu.com^$important
+||sugar.zhihu.com^$important
+||miao.zhihu.com^$important
+! —— 2. 打击知乎广告素材的“祖坟” ( picx 系列全封 ) ——
+||pic1.zhimg.com^$important,domain=ad
+||pic2.zhimg.com^$important,domain=ad
+||pic3.zhimg.com^$important,domain=ad
+||pic4.zhimg.com^$important,domain=ad
+||picx.zhimg.com^$important,domain=ad
+||pica.zhimg.com^$important,domain=ad
+||picb.zhimg.com^$important,domain=ad
+! —— 3. 封杀知乎用来控制开屏倒计时的脚本 ——
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/launch*^$important
+! —— 4. 封杀第三方监测（知乎最喜欢用的监测商） ——
+||conv.m.shanghai.faw.com.cn^$important
+||tracking.miui.com^$important
+||ad.xiaomi.com^$important
+! —— 5. 针对 Gemini 再次强效放行（防止上述规则误伤上传） ——
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||gemini.google.com^$important
+! =====================================================================
+! 🍅 番茄小说专项：终极“屠龙”加固包 (只增不删，追加到最底部)
+! 📌 目标：彻底清理阅读页插屏广告、强推短剧、底层穿山甲 SDK
+! =====================================================================
+! —— 1. 彻底斩断番茄深层广告调度与穿山甲联盟 API（全量封杀） ——
+! 这些接口是番茄小说用来向字节总部请求“下发什么广告”的核心通道
+||api-access.pangolin-sdk-toutiao.com^$important
+||api-access.pangolin-sdk-toutiao-b.com^$important
+||bds.snssdk.com^$important
+||gts.snssdk.com^$important
+||mon.zijieapi.com^$important
+||mon.snssdk.com^$important
+||lf-webcast-sourcecdn-tos.bytegecko.com^$important
+||lf-webcast-cdn-tos-ncdn.bytegecko.com^$important
+||ads3-normal-lf.zijieapi.com^$important
+||ads5-normal-lf.zijieapi.com^$important
+! —— 2. 封杀番茄小说插屏图文、开屏缓存池与视频流素材 ——
+! 只要切断这些图片和视频的下载链接，广告位就只能显示空白
+||p1-ad-sign.byteimg.com^$important
+||p2-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||v*-dy-ad-y.ad.toutiao.com^$important
+! —— 3. 番茄小说强力 UI 物理隐藏 (针对漏网之鱼，直接挖掉广告框) ——
+! 如果极个别广告通过 HTTPS 强行穿透了，咱们就让路由器命令手机隐藏这些框架
+com.dragon.read##.ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash"]
+com.dragon.read##[id*="ad_view"]
+com.dragon.read##[id*="ad_container"]
+com.dragon.read##[id*="banner_ad"]
+com.dragon.read##[id*="tt_ad"]
+com.dragon.read##[id*="tt_reward"]
+! —— 4. 稳定白名单（确保小说正文和听书功能防误杀） ——
+! 笔记：保证基本阅读体验不受任何影响
+@@||novel.snssdk.com^$important
+@@||lf-fe.fqnovelstatic.com^$important
+@@||v*-default.fqnovelpic.com^$important
+@@||tos-v*.snssdk.com^$important
+@@||p*-novel-sign.byteimg.com^$important
+! =====================================================================
+! 🛒 京东开屏倒计时专项“死刑”加固包 (只增不删，强化雅典娜京东优化)
+! =====================================================================
+! —— 1. 精准绞杀京东动态开屏 API (无视白名单) ——
+! 京东现在把广告混在正常的 client.action 请求里，必须带参数封杀
+||api.m.jd.com/client.action?functionId=start*^$important
+||api.m.jd.com/client.action?functionId=getSplashAd*^$important
+||api.m.jd.com/client.action?functionId=ad*^$important
+||api.m.jd.com/client.action?functionId=welcomeHome*^$important
+! —— 2. 封杀京东新增的商业化联盟与追踪域名 ——
+||pa.jd.com^$important
+||kepler.jd.com^$important
+||keplerapi.jd.com^$important
+||api.m.jd.care^$important
+! —— 3. 拦截京东第三方广告下发 (有时候京东会借用腾讯的通道) ——
+||v.gdt.qq.com^$important
+||mi.gdt.qq.com^$important
+! —— 4. 强制物理隐藏京东 App 开屏与弹窗元件 ——
+com.jingdong.app.mall##.splash-ad-container
+com.jingdong.app.mall##[id*="splash"]
+com.jingdong.app.mall##[id*="ad_"]
+com.jingdong.app.mall##[class*="SplashAd"]
+! =====================================================================
+! 🍿 红果/番茄短剧专项：内容疏通补丁 (只增不删，解决视频无法加载)
+! 说明：利用 @@ 规则恢复字节跳动内容节点，同时保留广告拦截
+! =====================================================================
+! —— 1. 恢复字节跳动视频流核心域名 (这是看视频必须的) ——
+@@||v*.snssdk.com^$important
+@@||v*.pstatp.com^$important
+@@||*-tos.snssdk.com^$important
+@@||bytegecko.com^$important
+@@||volces.com^$important
+@@||byteimg.com^$important
+! —— 2. 专项放行红果/番茄短剧的业务接口 ——
+@@||novel.snssdk.com^$important
+@@||api*-normal-*.fqnovel.com^$important
+@@||lf*-tos.pstatp.com^$important
+! —— 3. 再次补刀：确保虽然放行了节点，但广告域名依然死锁 ——
+! 只要不带 @@ 的拦截规则在，这些特定广告接口依然会被拦截
+||api-access.pangolin-sdk-toutiao.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.io^$important
+! —— 1. 封杀番茄小说最新的广告 API (补充) ——
+||api*-normal-c-*.fqnovel.com/api/ad*^$important
+||api*-normal-v-*.fqnovel.com/api/ad*^$important
+||api*-normal-*.fqnovel.com/reading/advert*^$important
+! —— 2. 封杀字节跳动通用的穿山甲广告图片分发 ——
+||p*-ad-sign.byteimg.com/ad-presign*^$important
+||p*-ad-sign.byteimg.com/tos-cn-i-*-ad*^$important
+! —— 3. 强制隐藏番茄小说 App 内部广告占位符 (新增布局名称) ——
+com.dragon.read##.reward_video_ad
+com.dragon.read##.listen_ad_container
+com.dragon.read##.book_read_ad_view
+com.dragon.read##[id*="ad_view_holder"]
+com.dragon.read##[id*="ad_wrapper"]
+com.dragon.read##.bottom_banner_ad
+com.dragon.read##.interstitial_ad
+! —— 4. 封杀红果/番茄通用的“看广告解锁”逻辑接口 ——
+||api*-normal-*.fqnovel.com/api/v1/task/reward*^$important
+! —— 封杀番茄小说/红果短剧的激励视频素材域名 ——
+||fqnovelvod.com^$important
+||v*-hl-*-reading-video.fqnovelvod.com^$important
+! —— 封杀番茄/红果调用的第三方伪装 CDN 广告素材 ——
+||itunessaing.qtlcdn.com^$important
+||*.qtlcdn.com^$important,domain=~qiniu.com
+! —— 封杀乱码类的第三方广告追踪/下发域名 (indevs.in 系列) ——
+||indevs.in^$important
+||*.indevs.in^$important
+! —— 封杀第三方 CDN 伪装广告素材 (qnydns.com 系列) ——
+||qnydns.com^$important
+||Allcdn.lv2.qnydns.com^$important
+! —— 保持抖音/红果视频流畅通 (防误杀加固) ——
+@@||douyincdn.com^$important
+@@||pull-flv*.douyincdn.com^$important
+! =====================================================================
+! 🔨 大哥专项：今日日志精准补刀包 (只增不删)
+! =====================================================================
+! —— 1. 绝杀：乱码类与可疑后缀广告源 ——
+||ccgfw.top^$important
+||indevs.in^$important
+! —— 2. 特赦：确保番茄小说/红果内容加载 (防误杀) ——
+! 笔记：这些是看书和看封面必须的，即便带了 novel 关键字也要放行
+@@||p*-novel.byteimg.com^$important
+@@||p*-reading-sign.fqnovelpic.com^$important
+@@||douyincdn.com^$important
+@@||open.douyin.com^$important
+! —— 3. 特赦：苹果系统基础服务 ——
+@@||iphone-ld.apple.com^$important
+! —— 4. 再次强调：阻断那些伪装成苹果域名的广告素材 ——
+||itunessaing.qtlcdn.com^$important
+! —— 1. 既然 ecombdimg 主要是电商广告，咱们限制它在番茄小说里出现 ——
+||ecombdimg.com^$important,domain=com.dragon.read|com.hn.read
+! —— 2. 封杀字节跳动所有的“非核心”广告下发前缀 (用通配符) ——
+||p*-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||p*-be-pack-sign.pglstatp-toutiao.com^$important
+! —— 3. 绝杀：直接切断番茄小说的广告请求路径 (不管它换什么域名) ——
+/api/ad/union/sdk/v1/list^$important
+/api/ad/v1/get_ads^$important
+/reading/advert/config^$important
+! =====================================================================
+! 🔨 大哥专项：22:39 深层清理补丁 (斩草除根)
+! =====================================================================
+! —— 1. 封杀伪装成字节跳动的恶意广告源 ——
+||queniurc.com^$important
+||bytedance.com.queniurc.com^$important
+! —— 2. 封杀隐蔽的第三方广告 CDN 节点 ——
+||tl88.net^$important
+||*.s.tl88.net^$important
+! —— 3. 再次补刀：预防此类“前缀伪装”攻击 ——
+! 拦截所有试图伪装成大厂域名的第三方奇怪后缀
+||bytedance.com.*^$important,domain=~bytedance.com
+||apple.com.*^$important,domain=~apple.com
+! =====================================================================
+! 🔨 大哥专项：22:42 阿里云 OSS 行为规范补丁
+! =====================================================================
+! —— 1. 限制阿里云存储被用于广告下发 (只拦截带 ad 字眼的请求) ——
+||aliyuncs.com/ad*^$important
+||aliyuncs.com/*advert*^$important
+||oss-enet.aliyuncs.com/v1/ad*^$important
+! —— 2. 封杀那些打着阿里旗号的统计接口 (可选) ——
+||arms-retcode.aliyuncs.com^$important
+||log-upload.aliyuncs.com^$important
+! —— 3. 确保苹果基础服务不受刚才“apple.com.*”规则的误伤 ——
+@@||gateway.icloud.com^$important
+@@||apple-dns.net^$important
+! =====================================================================
+! 🔨 大哥专项：22:44 番茄小说“电商插屏”深度斩首
+! =====================================================================
+! —— 1. 绝杀：字节跳动所有电商广告图片分片 (p1-p100 统统死刑) ——
+! 针对你抓到的 p3-aio，我们直接用通配符封死整个 aio 系列
+||p*-aio.ecombdimg.com^$important
+||p*-item.ecombdimg.com^$important
+||p*-obj.ecombdimg.com^$important
+! —— 2. 封杀番茄小说/红果内嵌的“小店”接口 ——
+||ec.snssdk.com^$important
+||f-p-static.snssdk.com^$important
+! —— 3. 安全特赦：确保淘宝/天猫网关正常 (防误杀) ——
+@@||acs.m.taobao.com^$important
+@@||*.alibabadns.com^$important
+! =====================================================================
+! 🚀 GEMINI & GOOGLE 全球服务特赦白名单 (最高优先级) 
+! 📌 解决：上传附件失败、同步异常、页面卡加载等问题
+! =====================================================================
+! —— Gemini 核心上传与会话通道 ——
+@@||gemini.google.com^$important
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||upload.googleapis.com^$important
+@@||apis.google.com^$important
+@@||clients*.google.com^$important
+@@||client-channel.google.com^$important
+@@||googleusercontent.com^$important
+@@||doc-00-5s-docs.googleusercontent.com^$important
+! —— 修复上传时被 log 拦截规则误杀的问题（彻底覆盖拦截） ——
+@@||gemini.google.com/log*^$important
+@@||gemini.google.com/analytics*^$important
+! —— 补全文件存储与预览接口 ——
+@@||lh3.googleusercontent.com^$important
+@@||photos.google.com^$important
+@@||docs.google.com^$important
+@@||drive.google.com^$important
+! —— Google 账号认证及基础服务通畅 ——
+@@||accounts.google.com^$important
+@@||oauth2.googleapis.com^$important
+@@||identitytoolkit.googleapis.com^$important
+@@||play.google.com^$important
+@@||android.clients.google.com^$important
+@@||dl.google.com^$important
+@@||update.googleapis.com^$important
+@@||gstatic.com^$important
+@@||fonts.googleapis.com^$important
+@@||fonts.gstatic.com^$important
+@@||generativelanguage.googleapis.com^$important
+@@||up.audio.google.com^$important
+@@||colab.research.google.com^$important
+@@||google.com^$important
+! =====================================================================
+! 🟢 常用国内平台与路由器局域网精准白名单
+! =====================================================================
+@@||taobao.com^$important,domain=~wcp.taobao.com|~adash.m.taobao.com|~amdc.m.taobao.com
+@@||jd.com^$important,domain=~jzt.jd.com|~ad.m.jd.com|~ads.m.jd.com
+@@||tmall.com^$important
+@@||flyme.cn^$important
+@@||meizu.com^$important
+@@||wl.jd.com^$important
+@@||flydigi.com^
+@@||000714.xyz^
+@@||blueskyxn.com^
+@@|https://$client=192.168.1.1/24
+! =====================================================================
+! 🔴 强力狙击区：字节系 / 番茄小说 / 抖音 广告核心
+! 📌 整合了你多次追加的番茄小说与字节穿山甲 API 拦截
+! =====================================================================
+! —— 书城跳转与插屏 API 专项 ——
+||fqnovel.com/api/ad*^$important
+||fqnovel.com/reading/advert*^$important
+||api*-normal-*.fqnovel.com^$important
+||*.fqnovel.com/api/advert*^$important
+||api5-normal-lf.fqnovel.com/api/ad*^$important
+||api5-normal-lf.fqnovel.com/reading/advert*^$important
+||api3-normal-lf.fqnovel.com/api/ad*^$important
+||api3-normal-lf.fqnovel.com/reading/advert*^$important
+||api*-sinfnormal.fqnovel.com^$important,app=com.dragon.read
+||api5-normal-sinfonlinec.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+||api*-normal-sinfonline*.fqnovel.com/reading/bookapi/$important,app=com.dragon.read
+! —— 核心组件与遥测数据上报 ——
+||applog.dragonread.com^$important
+||track.dragonread.com^$important
+||*-ad-sign.byteimg.com^$important
+||p3-ad-sign.byteimg.com^$important
+||p6-ad-sign.byteimg.com^$important
+||p9-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p3-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p6-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p9-novel1-sign.byteimg.com^$app=com.dragon.read,important
+||p*-novel-sign.byteimg.com/novel-pic/$important,app=com.dragon.read
+||ad.byteimg.com^$important
+||ad.zijieapi.com^$important
+||ad.toutiao.com^$important
+||ad.xigua.com^$important
+||ad.api.pstatp.com^$important
+||i-ads.snssdk.com^$important
+||is.snssdk.com^$important
+||*sdk*api*.-ad-*.snssdk.com^$important
+||*sdk*api*.-ad-*.pstatp.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||sf9-ttcdn-tos.pstatp.com^$important
+||v3-dy-ad-y.ad.toutiao.com^$important
+||v6-dy-ad-y.ad.toutiao.com^$important
+||pangolin-sdk-toutiao.com^$important
+||pangolin-sdk-toutiao-b.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.cn^$important
+||pangle.io^$important
+||log-api.pangolin-sdk-toutiao-b.com^
+! —— GitHub 原始屠龙刀补充规则 ——
+||*static*^$app=com.dragon.read,important
+||*sealaly*^$app=com.dragon.read,important
+||*toutiao*^$app=com.dragon.read,important
+||*bsgslb*^$app=com.dragon.read,important
+||*misc*^$app=com.dragon.read,important
+||*douyin*^$app=com.dragon.read,important
+||*ecombd*^$app=com.dragon.read,important
+||*byte*^$app=com.dragon.read,important
+||*0kkkkkt*^$app=com.dragon.read,important
+||*cjjd14*^$app=com.dragon.read,important
+||*ietheivaicai*^$app=com.dragon.read,important
+||*stream*^$app=com.dragon.read,important
+||*siomxity*^$app=com.dragon.read,important
+/[a-zA-Z0-9.-]*-normal\.zijieapi\.com/
+||mssdk.zijieapi.com^$app=com.dragon.read,important
+||lf3-reading.fqnovelpic.com^$app=com.dragon.read,important
+||*applog*.*.*^$app=com.dragon.read,important
+||feedback-c.zijieapi.com^$app=com.dragon.read,important
+||ads*-normal-*.zijieapi.com^$app=com.dragon.read,important
+||*pstatp*^$app=com.dragon.read,important
+||dig.bdurl.net^$app=com.dragon.read,important
+||*qtaeixd*^$app=com.dragon.read,important
+||*erer*^$app=com.dragon.read,important
+||*ttweb*^$app=com.dragon.read,important
+||*sinfonlinec*^$important,app=com.dragon.read
+||mssdk.volces.com^$app=com.dragon.read,important
+||mon.snssdk.com^$app=com.dragon.read,important
+||toblog.ctobsnssdk.com^$app=com.dragon.read,important
+||mon.zijieapi.com^$app=com.dragon.read,important
+||dig.zjurl.cn^$app=com.dragon.read,important
+||gecko*.zijieapi.com^$app=com.dragon.read,important
+||polaris.zijieapi.com^$app=com.dragon.read,important
+||snssdk.com^$app=com.dragon.read,important
+||lf*-webcast-cdn-tos-ncdn.bytegecko.com^$app=com.dragon.read,important
+||bsync3-normal-hl.zijieapi.com^$app=com.dragon.read,important
+||p*.douyinpic.com^$app=com.dragon.read,important
+||ecombdimg.com^$app=com.dragon.read,important
+||mon*-misc-*.fqnovel.com^$app=com.dragon.read,important
+@@||reading.snssdk.com^$important,app=com.dragon.read
+@@||lf-fe.fqnovelstatic.com^$important,app=com.dragon.read
+@@||lf-normal-gr-sourcecdn.bytegecko.com^$important,app=com.dragon.read
+@@||security.snssdk.com^$important,app=com.dragon.read
+@@||lf-sourcecdn-tos.bytegecko.com^$important,app=com.dragon.read
+! =====================================================================
+! 🟡 购物电商系：淘宝 / 京东 / 拼多多 / 饿了么
+! =====================================================================
+! —— 淘宝 / 阿里 跳转核心 ——
+||wcp.taobao.com^$important
+||wcp.tmall.com^$important
+||wcp.alicdn.com^$important
+||poplayer.taobao.com^$important
+||amdc.m.taobao.com^$important
+||amdc.wapa.taobao.com^$important
+||amdc.alipay.com^$important
+||adash.m.taobao.com^$important
+||adashx.m.taobao.com^$important
+||tanx.com^$important
+||alimama.com^$important
+||mmstat.com^$important
+||nbsdk-baichuan.alicdn.com^$important
+||tunion-api.m.taobao.com^$important
+||audid-api.taobao.com^$important
+||beacon-api.aliyuncs.com^$important
+! —— 京东核心 ——
+||jzt.jd.com^$important
+||ad.m.jd.com^$important
+||ads.m.jd.com^$important
+||xlog.jd.com^
+||dsp-x.jd.com^
+||mercury.jd.com^
+||d.jd.com^
+||api.m.jd.com/client.action?functionId=ad*
+! —— 饿了么 / 拼多多 / 其他 ——
+||adash.m.ele.me^$important
+||p.ele.me^$important
+||ad.ele.me^$important
+||mtop.ele.me.device.deviceguid.get^$important
+||t-ads.pinduoduo.com^$important
+||api.pinduoduo.com/api/ad*
+||pinduoduo.com^$app=com.xunmeng.pinduoduo
+||msg.71.am^$important
+||s.dianping.com^$important
+! =====================================================================
+! 💣 知乎开屏倒计时专项“核打击”规则 (合并去重增强版)
+! =====================================================================
+! —— 封杀知乎全新的广告调度与数据监控 API ——
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/feeds/ad*^$important
+||zhihu.com/api/v4/splash_ad*^$important
+||zhihu.com/api/v4/questions/*/ad*^$important
+||zhihu.com/api/v4/topstory/feed*^$important
+||zhihu.com/api/v4/notifications/count^$important
+||zhihu.com/api/v4/me^$important
+||zhihu.com/api/v4/short_video*^$important
+! —— 封杀知乎所有广告图片内容节点及特定 CDN ——
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||zhimg.com^$important,domain=ad
+||zhihu-app.com^$important
+||miao.zhihu.com^$important
+||sugar.zhihu.com^$important
+||appcloud2.zhihu.com^$important
+! =====================================================================
+! 🚫 全网大厂与系统级联盟 SDK (拦截开屏、横幅及流氓素材)
+! =====================================================================
+! —— 新浪 / 美团 / B站 / 爱奇艺 / 网易 ——
+||adapi.sina.com.cn^$important
+||u1.sinaimg.cn^$important
+||sax.sina.com.cn^$important
+||ad.meituan.com^$important
+||flow.meituan.com^
+||cm.bilibili.com^$important
+||iad.g.163.com^$important
+||gorgon.youdao.com^$important
+||crash.163.com^$important
+||stat.music.163.com^$important
+||adash.163.com^$important
+||t7z.cupid.iqiyi.com^$important
+! —— 腾讯广点通及系暗哨 ——
+||gdt.qq.com^$important
+||adsmind.gdtimg.com^$important
+||mi.gdt.qq.com^$important
+||pgdt.ugdtimg.com^$important
+||win.gdt.qq.com^$important
+||c.gdt.qq.com^$important
+||t.gdt.qq.com^$important
+||v.gdt.qq.com^$important
+||w.gdt.qq.com^$important
+||szmg.qq.com^$important
+||splashqqlive.gtimg.com^$important
+||mtrace.qq.com^$important
+||btrace.qq.com^$important
+||pingma.qq.com^$important
+||tdw.qq.com^$important
+! —— 百度百青藤 ——
+||mobads.baidu.com^$important
+||mobads-logs.baidu.com^$important
+||pos.baidu.com^$important
+||dup.baidustatic.com^$important
+||cpro.baidustatic.com^$important
+||afd.baidu.com^$important
+||als.baidu.com^$important
+||cpu.baidu.com^$important
+||wn.pos.baidu.com^$important
+||bce.baidu.com^$important
+! —— 快手 SDK 深层素材补充 ——
+||e.kuaishou.com^$important
+||adx.e.kuaishou.com^$important
+||sdk.e.kuaishou.com^$important
+||open.e.kuaishou.com^
+||p1-lm.adkwai.com^
+||v.adkwai.com^$important
+! —— Google Ads (如无需点击搜索广告请保持拦截) ——
+||pagead2.googlesyndication.com^$important
+||adservice.google.com^$important
+||google-analytics.com^$important
+||googletagmanager.com^$important
+||googlesyndication.com^$important
+||doubleclick.net^$important
+! =====================================================================
+! 📱 手机大厂底层 (华米OV) 与智能电视霸主
+! =====================================================================
+! 华为
+||ad.dbankcloud.cn^$important
+||ad.dbankcloud.com^$important
+||metrics.data.hicloud.com^$important
+||metrics2.data.hicloud.com^$important
+! 小米
+||sdkconfig.ad.xiaomi.com^$important
+||ad.mi.com^$important
+||adv.sec.miui.com^$important
+||o2o.api.xiaomi.com^$important
+||bss.pandora.xiaomi.com^$important
+||ad.xiaomi.com^$important
+||stat.xiaomi.com^$important
+! OPPO
+||ams.oppomobile.com^$important
+||adsfs.oppomobile.com^$important
+||adx.ads.oppomobile.com^$important
+||cdo-comm.heytapmobile.com^$important
+! VIVO
+||ads.service.vivo.com.cn^$important
+||adlog.vivo.com.cn^$important
+||st.vivo.com.cn^$important
+||vnet.vivo.com.cn^$important
+! 智能电视/乐播投屏
+||logonext.tv.kuyun.com^$important
+||config.kuyun.com^$important
+||ad.hpplay.cn^$important
+||adeng.hpplay.cn^$important
+||rp.hpplay.cn^$important
+! =====================================================================
+! ☢️ 深水区：第三方行为画像与大数据追踪 (友盟、个推等)
+! =====================================================================
+||log.umtrack.com^$important
+||applog.umeng.com^$important
+||ulogs.umeng.com^$important
+||tracking.talkingdata.com^$important
+||app.talkingdata.com^$important
+||sdk.open.jpush.cn^$important
+||x.getui.com^$important
+||ynuf.alipay.com^$important
+||mdskip.taobao.com^$important
+||toblog.snssdk.com^$important
+||bds.snssdk.com^$important
+||crash.snssdk.com^$important
+||api.adnet.mob.com^$important
+||ws.ad.cmvideo.cn^$important
+||log.snssdk.com^$important
+||rtlog.snssdk.com^$important
+! =====================================================================
+! 🛠️ 历史稳定域名过滤 (遗留强效底子)
+! =====================================================================
+||topnewsfeeds.net^
+||nbryb.com^
+||superbdolly.com^
+||salutationcheerlessdemote.com^
+||buildingdoodlesquare.com^
+||colonistnobilityheroic.com^
+||5hz.org^
+! =====================================================================
+! ✂️ UI 隐藏规则 (物理隐藏各大 App 开屏广告位占位符)
+! =====================================================================
+com.dragon.read##.splash-ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash_ad"]
+com.dragon.read##.ad_container
+com.dragon.read##.article-ad-card
+com.taobao.taobao##.splash-ad-container
+com.taobao.taobao##[class*="SplashAd"]
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##[id*="splash_ad"]
+com.zhihu.android##[class*="SplashAd"]
+com.zhihu.android##.ad_full_screen_layout
+! =====================================================================
+! 🔨 知乎专项：绝杀加固包 (针对知乎开屏反复跳出的终极补丁)
+! =====================================================================
+! —— 封杀知乎广告分发的核心域名（绝不留情） ——
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/launch*^$important
+||api.zhihu.com/ad*^$important
+||advert.zhihu.com^$important
+
+! —— 封杀知乎广告素材加载（拦截图片和视频素材） ——
+||pic1.zhimg.com/v2-ad*^$important
+||pic2.zhimg.com/v2-ad*^$important
+||pic3.zhimg.com/v2-ad*^$important
+||pic4.zhimg.com/v2-ad*^$important
+||picx.zhimg.com/v2-ad*^$important
+||video.zhimg.com/ad*^$important
+
+! —— 封杀第三方监测（知乎调用第三方来倒计时） ——
+||mi.gdt.qq.com^$important
+||win.gdt.qq.com^$important
+||pgl.snssdk.com^$important
+
+! —— 强制物理隐藏知乎 App 开屏 View ——
+com.zhihu.android##.splash-ad-container
+com.zhihu.android##.ad-container
+com.zhihu.android##[id*="splash"]
+com.zhihu.android##[class*="SplashAd"]
+! =====================================================================
+! 🔨 知乎专项：暴力加固追加包 (针对 HTTPDNS 与 动态域名)
+! =====================================================================
+! —— 1. 全量封杀知乎所有可能的 API 子域名 ——
+||api.zhihu.com^$important
+||api.zhihu.com.cdn.cloudflare.net^$important
+||api-fanyi.zhihu.com^$important
+||mqtt.zhihu.com^$important
+||push.zhihu.com^$important
+||sugar.zhihu.com^$important
+||miao.zhihu.com^$important
+
+! —— 2. 打击知乎广告素材的“祖坟” ( picx 系列全封 ) ——
+||pic1.zhimg.com^$important,domain=ad
+||pic2.zhimg.com^$important,domain=ad
+||pic3.zhimg.com^$important,domain=ad
+||pic4.zhimg.com^$important,domain=ad
+||picx.zhimg.com^$important,domain=ad
+||pica.zhimg.com^$important,domain=ad
+||picb.zhimg.com^$important,domain=ad
+
+! —— 3. 封杀知乎用来控制开屏倒计时的脚本 ——
+||zhihu.com/api/v4/splash*^$important
+||zhihu.com/api/v4/ad*^$important
+||zhihu.com/api/v4/launch*^$important
+
+! —— 4. 封杀第三方监测（知乎最喜欢用的监测商） ——
+||conv.m.shanghai.faw.com.cn^$important
+||tracking.miui.com^$important
+||ad.xiaomi.com^$important
+
+! —— 5. 针对 Gemini 再次强效放行（防止上述规则误伤上传） ——
+@@||storage.googleapis.com^$important
+@@||content-storage.googleapis.com^$important
+@@||gemini.google.com^$important
+! =====================================================================
+! 🍅 番茄小说专项：终极“屠龙”加固包 (只增不删，追加到最底部)
+! 📌 目标：彻底清理阅读页插屏广告、强推短剧、底层穿山甲 SDK
+! =====================================================================
+
+! —— 1. 彻底斩断番茄深层广告调度与穿山甲联盟 API（全量封杀） ——
+! 这些接口是番茄小说用来向字节总部请求“下发什么广告”的核心通道
+||api-access.pangolin-sdk-toutiao.com^$important
+||api-access.pangolin-sdk-toutiao-b.com^$important
+||bds.snssdk.com^$important
+||gts.snssdk.com^$important
+||mon.zijieapi.com^$important
+||mon.snssdk.com^$important
+||lf-webcast-sourcecdn-tos.bytegecko.com^$important
+||lf-webcast-cdn-tos-ncdn.bytegecko.com^$important
+||ads3-normal-lf.zijieapi.com^$important
+||ads5-normal-lf.zijieapi.com^$important
+
+! —— 2. 封杀番茄小说插屏图文、开屏缓存池与视频流素材 ——
+! 只要切断这些图片和视频的下载链接，广告位就只能显示空白
+||p1-ad-sign.byteimg.com^$important
+||p2-ad-sign.byteimg.com^$important
+||p26-ad-sign.byteimg.com^$important
+||p*-ad-sign.byteimg.com^$important
+||sf1-ttcdn-tos.pstatp.com^$important
+||sf3-ttcdn-tos.pstatp.com^$important
+||sf6-ttcdn-tos.pstatp.com^$important
+||v*-dy-ad-y.ad.toutiao.com^$important
+
+! —— 3. 番茄小说强力 UI 物理隐藏 (针对漏网之鱼，直接挖掉广告框) ——
+! 如果极个别广告通过 HTTPS 强行穿透了，咱们就让路由器命令手机隐藏这些框架
+com.dragon.read##.ad-container
+com.dragon.read##.ad_full_screen_layout
+com.dragon.read##[class*="SplashAd"]
+com.dragon.read##[id*="splash"]
+com.dragon.read##[id*="ad_view"]
+com.dragon.read##[id*="ad_container"]
+com.dragon.read##[id*="banner_ad"]
+com.dragon.read##[id*="tt_ad"]
+com.dragon.read##[id*="tt_reward"]
+
+! —— 4. 稳定白名单（确保小说正文和听书功能防误杀） ——
+! 笔记：保证基本阅读体验不受任何影响
+@@||novel.snssdk.com^$important
+@@||lf-fe.fqnovelstatic.com^$important
+@@||v*-default.fqnovelpic.com^$important
+@@||tos-v*.snssdk.com^$important
+@@||p*-novel-sign.byteimg.com^$important
+! =====================================================================
+! 🛒 京东开屏倒计时专项“死刑”加固包 (只增不删，强化雅典娜京东优化)
+! =====================================================================
+! —— 1. 精准绞杀京东动态开屏 API (无视白名单) ——
+! 京东现在把广告混在正常的 client.action 请求里，必须带参数封杀
+||api.m.jd.com/client.action?functionId=start*^$important
+||api.m.jd.com/client.action?functionId=getSplashAd*^$important
+||api.m.jd.com/client.action?functionId=ad*^$important
+||api.m.jd.com/client.action?functionId=welcomeHome*^$important
+
+! —— 2. 封杀京东新增的商业化联盟与追踪域名 ——
+||pa.jd.com^$important
+||kepler.jd.com^$important
+||keplerapi.jd.com^$important
+||api.m.jd.care^$important
+
+! —— 3. 拦截京东第三方广告下发 (有时候京东会借用腾讯的通道) ——
+||v.gdt.qq.com^$important
+||mi.gdt.qq.com^$important
+
+! —— 4. 强制物理隐藏京东 App 开屏与弹窗元件 ——
+com.jingdong.app.mall##.splash-ad-container
+com.jingdong.app.mall##[id*="splash"]
+com.jingdong.app.mall##[id*="ad_"]
+com.jingdong.app.mall##[class*="SplashAd"]
+! =====================================================================
+! 🍿 红果/番茄短剧专项：内容疏通补丁 (只增不删，解决视频无法加载)
+! 说明：利用 @@ 规则恢复字节跳动内容节点，同时保留广告拦截
+! =====================================================================
+
+! —— 1. 恢复字节跳动视频流核心域名 (这是看视频必须的) ——
+@@||v*.snssdk.com^$important
+@@||v*.pstatp.com^$important
+@@||*-tos.snssdk.com^$important
+@@||bytegecko.com^$important
+@@||volces.com^$important
+@@||byteimg.com^$important
+
+! —— 2. 专项放行红果/番茄短剧的业务接口 ——
+@@||novel.snssdk.com^$important
+@@||api*-normal-*.fqnovel.com^$important
+@@||lf*-tos.pstatp.com^$important
+
+! —— 3. 再次补刀：确保虽然放行了节点，但广告域名依然死锁 ——
+! 只要不带 @@ 的拦截规则在，这些特定广告接口依然会被拦截
+||api-access.pangolin-sdk-toutiao.com^$important
+||pglstatp-toutiao.com^$important
+||pangle.io^$important

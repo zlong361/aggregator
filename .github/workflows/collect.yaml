@@ -1,0 +1,42 @@
+name: Collect
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.repository }}
+  cancel-in-progress: true
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Prepare
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Collect
+        run: python -u subscribe/collect.py
+
+      # 【新增：核心同步逻辑】把生成的 clash.yaml 强行推送到 output 分支
+      - name: Deploy to Output Branch
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git checkout --orphan output-temp
+          git add clash.yaml
+          git commit -m "雅典娜 AX6600 订阅更新: $(date)"
+          git push origin output-temp:output --force
